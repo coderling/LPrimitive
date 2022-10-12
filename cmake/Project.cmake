@@ -69,26 +69,15 @@ endfunction()
 
 macro(EXportPackage)
     include(CMakePackageConfigHelpers)
-    set(package_name ${CMAKE_PROJECT_NAME})
+    set(package_name ${PROJECT_NAME})
     set(tname ${package_name}Targets)
-
-    if(ARG_TARGET)
-        export(EXPORT ${tname}
-            NAMESPACE L::
-        )
-        install(EXPORT ${tname}
-            FILE ${tname}.cmake
-            NAMESPACE L::
-            DESTINATION ${package_name}/cmake
-        )
-    endif()
 
     #
     include(CmakePackageConfigHelpers)
 
     write_basic_package_version_file(
         "${CMAKE_CURRENT_BINARY_DIR}/${package_name}ConfigVersion.cmake"
-        VERSION "${CMAKE_PROJECT_VERSION}"
+        VERSION ${PROJECT_VERSION}
         COMPATIBILITY SameMinorVersion
     )
 
