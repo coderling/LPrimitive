@@ -1,0 +1,32 @@
+[
+{
+  "directory": "E:/GitProj/LReferenceCounter/build",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LReferenceCounter/src/basic/include -IE:/GitProj/LReferenceCounter/src/basic/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\basic\\CMakeFiles\\CoreBasic.dir\\src\\SpinLock.cpp.obj -c E:\\GitProj\\LReferenceCounter\\src\\basic\\src\\SpinLock.cpp",
+  "file": "E:\\GitProj\\LReferenceCounter\\src\\basic\\src\\SpinLock.cpp"
+},
+{
+  "directory": "E:/GitProj/LReferenceCounter/build",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LReferenceCounter/src/common/include -IE:/GitProj/LReferenceCounter/src/basic/interface -IE:/GitProj/LReferenceCounter/src/common/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\common\\CMakeFiles\\Common.dir\\src\\DefaultMemoryAllocator.cpp.obj -c E:\\GitProj\\LReferenceCounter\\src\\common\\src\\DefaultMemoryAllocator.cpp",
+  "file": "E:\\GitProj\\LReferenceCounter\\src\\common\\src\\DefaultMemoryAllocator.cpp"
+},
+{
+  "directory": "E:/GitProj/LReferenceCounter/build",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LReferenceCounter/src/common/include -IE:/GitProj/LReferenceCounter/src/basic/interface -IE:/GitProj/LReferenceCounter/src/common/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\common\\CMakeFiles\\Common.dir\\src\\Time.cpp.obj -c E:\\GitProj\\LReferenceCounter\\src\\common\\src\\Time.cpp",
+  "file": "E:\\GitProj\\LReferenceCounter\\src\\common\\src\\Time.cpp"
+},
+{
+  "directory": "E:/GitProj/LReferenceCounter/build",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LReferenceCounter/src/common/include -IE:/GitProj/LReferenceCounter/src/basic/interface -IE:/GitProj/LReferenceCounter/src/common/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\common\\CMakeFiles\\Common.dir\\src\\VariableSizeAllocationsManager.cpp.obj -c E:\\GitProj\\LReferenceCounter\\src\\common\\src\\VariableSizeAllocationsManager.cpp",
+  "file": "E:\\GitProj\\LReferenceCounter\\src\\common\\src\\VariableSizeAllocationsManager.cpp"
+},
+{
+  "directory": "E:/GitProj/LReferenceCounter/build",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LReferenceCounter/src/common/include -IE:/GitProj/LReferenceCounter/src/basic/interface -IE:/GitProj/LReferenceCounter/src/common/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\common\\CMakeFiles\\Common.dir\\src\\DataBlob.cpp.obj -c E:\\GitProj\\LReferenceCounter\\src\\common\\src\\DataBlob.cpp",
+  "file": "E:\\GitProj\\LReferenceCounter\\src\\common\\src\\DataBlob.cpp"
+},
+{
+  "directory": "E:/GitProj/LReferenceCounter/build",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -IE:/GitProj/LReferenceCounter/src/basic/interface -IE:/GitProj/LReferenceCounter/src/common/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -std=gnu++20 -o test\\CMakeFiles\\empty.dir\\empty.cpp.obj -c E:\\GitProj\\LReferenceCounter\\test\\empty.cpp",
+  "file": "E:\\GitProj\\LReferenceCounter\\test\\empty.cpp"
+}
+]
