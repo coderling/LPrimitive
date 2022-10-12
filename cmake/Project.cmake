@@ -66,3 +66,44 @@ function(AddProjectBuildSetting target_name)
         target_compile_definitions(${target_name} INTERFACE "$<$<CONFIG:${r_config}>:NDEBUG;RELEASE>")
     endforeach()
 endfunction()
+
+macro(EXportPackage)
+    include(CMakePackageConfigHelpers)
+    set(package_name ${CMAKE_PROJECT_NAME})
+    set(tname ${package_name}Targets)
+
+    if(ARG_TARGET)
+        export(EXPORT ${tname}
+            NAMESPACE L::
+        )
+        install(EXPORT ${tname}
+            FILE ${tname}.cmake
+            NAMESPACE L::
+            DESTINATION ${package_name}/cmake
+        )
+    endif()
+
+    #
+    include(CmakePackageConfigHelpers)
+
+    write_basic_package_version_file(
+        "${CMAKE_CURRENT_BINARY_DIR}/${package_name}ConfigVersion.cmake"
+        VERSION "${CMAKE_PROJECT_VERSION}"
+        COMPATIBILITY SameMinorVersion
+    )
+
+    configure_package_config_file(
+        ${PROJECT_SOURCE_DIR}/config/${package_name}.cmake.in
+        "${CMAKE_CURRENT_BINARY_DIR}/${package_name}Config.cmake"
+        INSTALL_DESTINATION ${package_name}/cmake
+        NO_SET_AND_CHECK_MACRO
+        NO_CHECK_REQUIRED_COMPONENTS_MACRO
+    )
+
+    install(
+        FILES
+        "${CMAKE_CURRENT_BINARY_DIR}/${package_name}Config.cmake"
+        "${CMAKE_CURRENT_BINARY_DIR}/${package_name}ConfigVersion.cmake"
+        DESTINATION ${package_name}/cmake
+    )
+endmacro()

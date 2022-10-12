@@ -13,3 +13,5 @@ target_link_libraries(LPrimitiveInterface INTERFACE Common)
 
 add_subdirectory(src)
 add_subdirectory(test)
+
+EXportPackage(LPrimitive)
