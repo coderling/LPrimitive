@@ -1,5 +1,8 @@
-@L_package_init@
+@PACKAGE_INIT@
 
+@L_package_init@
+set(name @UBPA_PACKAGE_INIT@)
+message(${name})
 include("${CMAKE_CURRENT_LIST_DIR}/LPrimitiveTargets.cmake")
 
 check_required_components(LPrimitive)
