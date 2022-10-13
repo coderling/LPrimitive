@@ -3,15 +3,12 @@ project(LPrimitive VERSION 0.0.2)
 
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 include(Project)
-include(Common)
-InitProject()
+include(utils)
+L_init_project()
 
-AddProjectBuildSetting(LBuilSetting)
+L_add_buildsetting_interface_lib(BuildSetting)
 
-add_library(LPrimitiveInterface INTERFACE)
-target_link_libraries(LPrimitiveInterface INTERFACE Common)
+L_add_subdirectory_recurse(src)
+L_add_subdirectory_recurse(test)
 
-add_subdirectory(src)
-add_subdirectory(test)
-
-EXportPackage(LPrimitive)
+L_export_package()

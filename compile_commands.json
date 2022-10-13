@@ -1,28 +1,28 @@
 [
 {
   "directory": "E:/GitProj/LPrimitive/build",
-  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LPrimitive/src/basic/include -IE:/GitProj/LPrimitive/src/basic/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\basic\\CMakeFiles\\CoreBasic.dir\\src\\SpinLock.cpp.obj -c E:\\GitProj\\LPrimitive\\src\\basic\\src\\SpinLock.cpp",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LPrimitive/src/basic/include -IE:/GitProj/LPrimitive/src/common/include -IE:/GitProj/LPrimitive/src/basic/interface -IE:/GitProj/LPrimitive/src/common/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\CMakeFiles\\Primitive.dir\\basic\\src\\SpinLock.cpp.obj -c E:\\GitProj\\LPrimitive\\src\\basic\\src\\SpinLock.cpp",
   "file": "E:\\GitProj\\LPrimitive\\src\\basic\\src\\SpinLock.cpp"
 },
 {
   "directory": "E:/GitProj/LPrimitive/build",
-  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LPrimitive/src/common/include -IE:/GitProj/LPrimitive/src/basic/interface -IE:/GitProj/LPrimitive/src/common/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\common\\CMakeFiles\\Common.dir\\src\\DefaultMemoryAllocator.cpp.obj -c E:\\GitProj\\LPrimitive\\src\\common\\src\\DefaultMemoryAllocator.cpp",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LPrimitive/src/basic/include -IE:/GitProj/LPrimitive/src/common/include -IE:/GitProj/LPrimitive/src/basic/interface -IE:/GitProj/LPrimitive/src/common/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\CMakeFiles\\Primitive.dir\\common\\src\\DataBlob.cpp.obj -c E:\\GitProj\\LPrimitive\\src\\common\\src\\DataBlob.cpp",
+  "file": "E:\\GitProj\\LPrimitive\\src\\common\\src\\DataBlob.cpp"
+},
+{
+  "directory": "E:/GitProj/LPrimitive/build",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LPrimitive/src/basic/include -IE:/GitProj/LPrimitive/src/common/include -IE:/GitProj/LPrimitive/src/basic/interface -IE:/GitProj/LPrimitive/src/common/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\CMakeFiles\\Primitive.dir\\common\\src\\DefaultMemoryAllocator.cpp.obj -c E:\\GitProj\\LPrimitive\\src\\common\\src\\DefaultMemoryAllocator.cpp",
   "file": "E:\\GitProj\\LPrimitive\\src\\common\\src\\DefaultMemoryAllocator.cpp"
 },
 {
   "directory": "E:/GitProj/LPrimitive/build",
-  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LPrimitive/src/common/include -IE:/GitProj/LPrimitive/src/basic/interface -IE:/GitProj/LPrimitive/src/common/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\common\\CMakeFiles\\Common.dir\\src\\Time.cpp.obj -c E:\\GitProj\\LPrimitive\\src\\common\\src\\Time.cpp",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LPrimitive/src/basic/include -IE:/GitProj/LPrimitive/src/common/include -IE:/GitProj/LPrimitive/src/basic/interface -IE:/GitProj/LPrimitive/src/common/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\CMakeFiles\\Primitive.dir\\common\\src\\Time.cpp.obj -c E:\\GitProj\\LPrimitive\\src\\common\\src\\Time.cpp",
   "file": "E:\\GitProj\\LPrimitive\\src\\common\\src\\Time.cpp"
 },
 {
   "directory": "E:/GitProj/LPrimitive/build",
-  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LPrimitive/src/common/include -IE:/GitProj/LPrimitive/src/basic/interface -IE:/GitProj/LPrimitive/src/common/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\common\\CMakeFiles\\Common.dir\\src\\VariableSizeAllocationsManager.cpp.obj -c E:\\GitProj\\LPrimitive\\src\\common\\src\\VariableSizeAllocationsManager.cpp",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LPrimitive/src/basic/include -IE:/GitProj/LPrimitive/src/common/include -IE:/GitProj/LPrimitive/src/basic/interface -IE:/GitProj/LPrimitive/src/common/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\CMakeFiles\\Primitive.dir\\common\\src\\VariableSizeAllocationsManager.cpp.obj -c E:\\GitProj\\LPrimitive\\src\\common\\src\\VariableSizeAllocationsManager.cpp",
   "file": "E:\\GitProj\\LPrimitive\\src\\common\\src\\VariableSizeAllocationsManager.cpp"
-},
-{
-  "directory": "E:/GitProj/LPrimitive/build",
-  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LPrimitive/src/common/include -IE:/GitProj/LPrimitive/src/basic/interface -IE:/GitProj/LPrimitive/src/common/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\common\\CMakeFiles\\Common.dir\\src\\DataBlob.cpp.obj -c E:\\GitProj\\LPrimitive\\src\\common\\src\\DataBlob.cpp",
-  "file": "E:\\GitProj\\LPrimitive\\src\\common\\src\\DataBlob.cpp"
 },
 {
   "directory": "E:/GitProj/LPrimitive/build",
