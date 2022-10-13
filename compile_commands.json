@@ -1,32 +1,82 @@
 [
 {
   "directory": "E:/GitProj/LPrimitive/build",
-  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LPrimitive/src/basic/include -IE:/GitProj/LPrimitive/src/common/include -IE:/GitProj/LPrimitive/src/basic/interface -IE:/GitProj/LPrimitive/src/common/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\CMakeFiles\\Primitive.dir\\basic\\src\\SpinLock.cpp.obj -c E:\\GitProj\\LPrimitive\\src\\basic\\src\\SpinLock.cpp",
-  "file": "E:\\GitProj\\LPrimitive\\src\\basic\\src\\SpinLock.cpp"
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LPrimitive/src/utils/interface -IE:/GitProj/LPrimitive/src/allocator/interface -IE:/GitProj/LPrimitive/src/reference_counter/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\CMakeFiles\\Primitive.dir\\utils\\src\\SpinLock.cpp.obj -c E:\\GitProj\\LPrimitive\\src\\utils\\src\\SpinLock.cpp",
+  "file": "E:\\GitProj\\LPrimitive\\src\\utils\\src\\SpinLock.cpp"
 },
 {
   "directory": "E:/GitProj/LPrimitive/build",
-  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LPrimitive/src/basic/include -IE:/GitProj/LPrimitive/src/common/include -IE:/GitProj/LPrimitive/src/basic/interface -IE:/GitProj/LPrimitive/src/common/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\CMakeFiles\\Primitive.dir\\common\\src\\DataBlob.cpp.obj -c E:\\GitProj\\LPrimitive\\src\\common\\src\\DataBlob.cpp",
-  "file": "E:\\GitProj\\LPrimitive\\src\\common\\src\\DataBlob.cpp"
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LPrimitive/src/utils/interface -IE:/GitProj/LPrimitive/src/allocator/interface -IE:/GitProj/LPrimitive/src/reference_counter/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\CMakeFiles\\Primitive.dir\\utils\\src\\Time.cpp.obj -c E:\\GitProj\\LPrimitive\\src\\utils\\src\\Time.cpp",
+  "file": "E:\\GitProj\\LPrimitive\\src\\utils\\src\\Time.cpp"
 },
 {
   "directory": "E:/GitProj/LPrimitive/build",
-  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LPrimitive/src/basic/include -IE:/GitProj/LPrimitive/src/common/include -IE:/GitProj/LPrimitive/src/basic/interface -IE:/GitProj/LPrimitive/src/common/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\CMakeFiles\\Primitive.dir\\common\\src\\DefaultMemoryAllocator.cpp.obj -c E:\\GitProj\\LPrimitive\\src\\common\\src\\DefaultMemoryAllocator.cpp",
-  "file": "E:\\GitProj\\LPrimitive\\src\\common\\src\\DefaultMemoryAllocator.cpp"
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LPrimitive/src/utils/interface -IE:/GitProj/LPrimitive/src/allocator/interface -IE:/GitProj/LPrimitive/src/reference_counter/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\CMakeFiles\\Primitive.dir\\utils\\src\\DataBlob.cpp.obj -c E:\\GitProj\\LPrimitive\\src\\utils\\src\\DataBlob.cpp",
+  "file": "E:\\GitProj\\LPrimitive\\src\\utils\\src\\DataBlob.cpp"
 },
 {
   "directory": "E:/GitProj/LPrimitive/build",
-  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LPrimitive/src/basic/include -IE:/GitProj/LPrimitive/src/common/include -IE:/GitProj/LPrimitive/src/basic/interface -IE:/GitProj/LPrimitive/src/common/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\CMakeFiles\\Primitive.dir\\common\\src\\Time.cpp.obj -c E:\\GitProj\\LPrimitive\\src\\common\\src\\Time.cpp",
-  "file": "E:\\GitProj\\LPrimitive\\src\\common\\src\\Time.cpp"
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LPrimitive/src/utils/interface -IE:/GitProj/LPrimitive/src/allocator/interface -IE:/GitProj/LPrimitive/src/reference_counter/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\CMakeFiles\\Primitive.dir\\utils\\src\\CString.cpp.obj -c E:\\GitProj\\LPrimitive\\src\\utils\\src\\CString.cpp",
+  "file": "E:\\GitProj\\LPrimitive\\src\\utils\\src\\CString.cpp"
 },
 {
   "directory": "E:/GitProj/LPrimitive/build",
-  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LPrimitive/src/basic/include -IE:/GitProj/LPrimitive/src/common/include -IE:/GitProj/LPrimitive/src/basic/interface -IE:/GitProj/LPrimitive/src/common/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\CMakeFiles\\Primitive.dir\\common\\src\\VariableSizeAllocationsManager.cpp.obj -c E:\\GitProj\\LPrimitive\\src\\common\\src\\VariableSizeAllocationsManager.cpp",
-  "file": "E:\\GitProj\\LPrimitive\\src\\common\\src\\VariableSizeAllocationsManager.cpp"
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LPrimitive/src/utils/interface -IE:/GitProj/LPrimitive/src/allocator/interface -IE:/GitProj/LPrimitive/src/reference_counter/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\CMakeFiles\\Primitive.dir\\allocator\\src\\DefaultMemoryAllocator.cpp.obj -c E:\\GitProj\\LPrimitive\\src\\allocator\\src\\DefaultMemoryAllocator.cpp",
+  "file": "E:\\GitProj\\LPrimitive\\src\\allocator\\src\\DefaultMemoryAllocator.cpp"
 },
 {
   "directory": "E:/GitProj/LPrimitive/build",
-  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -IE:/GitProj/LPrimitive/src/basic/interface -IE:/GitProj/LPrimitive/src/common/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -std=gnu++20 -o test\\CMakeFiles\\empty.dir\\empty.cpp.obj -c E:\\GitProj\\LPrimitive\\test\\empty.cpp",
-  "file": "E:\\GitProj\\LPrimitive\\test\\empty.cpp"
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -DDEBUG -DDEVELOPMENT -DPLATFORM_WINDOWS=1 -D_DEBUG -IE:/GitProj/LPrimitive/src/utils/interface -IE:/GitProj/LPrimitive/src/allocator/interface -IE:/GitProj/LPrimitive/src/reference_counter/interface -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Werror -Wall -Wextra -Wuninitialized -Wconditional-uninitialized -Wextra-tokens -Wpointer-arith -Wloop-analysis -Wunused -Wconversion -Wno-unused-parameter -std=gnu++20 -o src\\CMakeFiles\\Primitive.dir\\allocator\\src\\VariableSizeAllocationsManager.cpp.obj -c E:\\GitProj\\LPrimitive\\src\\allocator\\src\\VariableSizeAllocationsManager.cpp",
+  "file": "E:\\GitProj\\LPrimitive\\src\\allocator\\src\\VariableSizeAllocationsManager.cpp"
+},
+{
+  "directory": "E:/GitProj/LPrimitive/build",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -IE:/GitProj/LPrimitive/src/utils/interface -IE:/GitProj/LPrimitive/src/allocator/interface -IE:/GitProj/LPrimitive/src/reference_counter/interface -isystem E:/GitProj/LPrimitive/build/_deps/googletest-src/googletest/include -isystem E:/GitProj/LPrimitive/build/_deps/googletest-src/googletest -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -std=gnu++20 -o test\\CMakeFiles\\primitive-test.dir\\src\\main.cpp.obj -c E:\\GitProj\\LPrimitive\\test\\src\\main.cpp",
+  "file": "E:\\GitProj\\LPrimitive\\test\\src\\main.cpp"
+},
+{
+  "directory": "E:/GitProj/LPrimitive/build",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -IE:/GitProj/LPrimitive/src/utils/interface -IE:/GitProj/LPrimitive/src/allocator/interface -IE:/GitProj/LPrimitive/src/reference_counter/interface -isystem E:/GitProj/LPrimitive/build/_deps/googletest-src/googletest/include -isystem E:/GitProj/LPrimitive/build/_deps/googletest-src/googletest -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -std=gnu++20 -o test\\CMakeFiles\\primitive-test.dir\\src\\test-DebugUtility.cpp.obj -c E:\\GitProj\\LPrimitive\\test\\src\\test-DebugUtility.cpp",
+  "file": "E:\\GitProj\\LPrimitive\\test\\src\\test-DebugUtility.cpp"
+},
+{
+  "directory": "E:/GitProj/LPrimitive/build",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -IE:/GitProj/LPrimitive/src/utils/interface -IE:/GitProj/LPrimitive/src/allocator/interface -IE:/GitProj/LPrimitive/src/reference_counter/interface -isystem E:/GitProj/LPrimitive/build/_deps/googletest-src/googletest/include -isystem E:/GitProj/LPrimitive/build/_deps/googletest-src/googletest -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -std=gnu++20 -o test\\CMakeFiles\\primitive-test.dir\\src\\test-FormatString.cpp.obj -c E:\\GitProj\\LPrimitive\\test\\src\\test-FormatString.cpp",
+  "file": "E:\\GitProj\\LPrimitive\\test\\src\\test-FormatString.cpp"
+},
+{
+  "directory": "E:/GitProj/LPrimitive/build",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -IE:/GitProj/LPrimitive/src/utils/interface -IE:/GitProj/LPrimitive/src/allocator/interface -IE:/GitProj/LPrimitive/src/reference_counter/interface -isystem E:/GitProj/LPrimitive/build/_deps/googletest-src/googletest/include -isystem E:/GitProj/LPrimitive/build/_deps/googletest-src/googletest -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -std=gnu++20 -o test\\CMakeFiles\\primitive-test.dir\\src\\test-Logger.cpp.obj -c E:\\GitProj\\LPrimitive\\test\\src\\test-Logger.cpp",
+  "file": "E:\\GitProj\\LPrimitive\\test\\src\\test-Logger.cpp"
+},
+{
+  "directory": "E:/GitProj/LPrimitive/build",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -IE:/GitProj/LPrimitive/src/utils/interface -IE:/GitProj/LPrimitive/src/allocator/interface -IE:/GitProj/LPrimitive/src/reference_counter/interface -isystem E:/GitProj/LPrimitive/build/_deps/googletest-src/googletest/include -isystem E:/GitProj/LPrimitive/build/_deps/googletest-src/googletest -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -std=gnu++20 -o test\\CMakeFiles\\primitive-test.dir\\src\\test-VariableSizeAllocationsManager.cpp.obj -c E:\\GitProj\\LPrimitive\\test\\src\\test-VariableSizeAllocationsManager.cpp",
+  "file": "E:\\GitProj\\LPrimitive\\test\\src\\test-VariableSizeAllocationsManager.cpp"
+},
+{
+  "directory": "E:/GitProj/LPrimitive/build",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -IE:/GitProj/LPrimitive/src/utils/interface -IE:/GitProj/LPrimitive/src/allocator/interface -IE:/GitProj/LPrimitive/src/reference_counter/interface -isystem E:/GitProj/LPrimitive/build/_deps/googletest-src/googletest/include -isystem E:/GitProj/LPrimitive/build/_deps/googletest-src/googletest -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -std=gnu++20 -o test\\CMakeFiles\\primitive-test.dir\\src\\test-align.cpp.obj -c E:\\GitProj\\LPrimitive\\test\\src\\test-align.cpp",
+  "file": "E:\\GitProj\\LPrimitive\\test\\src\\test-align.cpp"
+},
+{
+  "directory": "E:/GitProj/LPrimitive/build",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -IE:/GitProj/LPrimitive/build/_deps/googletest-src/googlemock/include -IE:/GitProj/LPrimitive/build/_deps/googletest-src/googlemock -isystem E:/GitProj/LPrimitive/build/_deps/googletest-src/googletest/include -isystem E:/GitProj/LPrimitive/build/_deps/googletest-src/googletest -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Wall -Wshadow -Wconversion -DGTEST_HAS_PTHREAD=0 -fexceptions -W -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wunused-parameter -Wcast-align -Wchar-subscripts -Winline -Wredundant-decls -o _deps\\googletest-build\\googlemock\\CMakeFiles\\gmock.dir\\src\\gmock-all.cc.obj -c E:\\GitProj\\LPrimitive\\build\\_deps\\googletest-src\\googlemock\\src\\gmock-all.cc",
+  "file": "E:\\GitProj\\LPrimitive\\build\\_deps\\googletest-src\\googlemock\\src\\gmock-all.cc"
+},
+{
+  "directory": "E:/GitProj/LPrimitive/build",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -isystem E:/GitProj/LPrimitive/build/_deps/googletest-src/googlemock/include -isystem E:/GitProj/LPrimitive/build/_deps/googletest-src/googlemock -isystem E:/GitProj/LPrimitive/build/_deps/googletest-src/googletest/include -isystem E:/GitProj/LPrimitive/build/_deps/googletest-src/googletest -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Wall -Wshadow -Wconversion -DGTEST_HAS_PTHREAD=0 -fexceptions -W -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wunused-parameter -Wcast-align -Wchar-subscripts -Winline -Wredundant-decls -o _deps\\googletest-build\\googlemock\\CMakeFiles\\gmock_main.dir\\src\\gmock_main.cc.obj -c E:\\GitProj\\LPrimitive\\build\\_deps\\googletest-src\\googlemock\\src\\gmock_main.cc",
+  "file": "E:\\GitProj\\LPrimitive\\build\\_deps\\googletest-src\\googlemock\\src\\gmock_main.cc"
+},
+{
+  "directory": "E:/GitProj/LPrimitive/build",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -IE:/GitProj/LPrimitive/build/_deps/googletest-src/googletest/include -IE:/GitProj/LPrimitive/build/_deps/googletest-src/googletest -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Wall -Wshadow -Wconversion -DGTEST_HAS_PTHREAD=0 -fexceptions -W -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wunused-parameter -Wcast-align -Wchar-subscripts -Winline -Wredundant-decls -o _deps\\googletest-build\\googletest\\CMakeFiles\\gtest.dir\\src\\gtest-all.cc.obj -c E:\\GitProj\\LPrimitive\\build\\_deps\\googletest-src\\googletest\\src\\gtest-all.cc",
+  "file": "E:\\GitProj\\LPrimitive\\build\\_deps\\googletest-src\\googletest\\src\\gtest-all.cc"
+},
+{
+  "directory": "E:/GitProj/LPrimitive/build",
+  "command": "C:\\PROGRA~1\\LLVM\\bin\\CLANG_~1.EXE -isystem E:/GitProj/LPrimitive/build/_deps/googletest-src/googletest/include -isystem E:/GitProj/LPrimitive/build/_deps/googletest-src/googletest -g -Xclang -gcodeview -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Wall -Wshadow -Wconversion -DGTEST_HAS_PTHREAD=0 -fexceptions -W -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wunused-parameter -Wcast-align -Wchar-subscripts -Winline -Wredundant-decls -o _deps\\googletest-build\\googletest\\CMakeFiles\\gtest_main.dir\\src\\gtest_main.cc.obj -c E:\\GitProj\\LPrimitive\\build\\_deps\\googletest-src\\googletest\\src\\gtest_main.cc",
+  "file": "E:\\GitProj\\LPrimitive\\build\\_deps\\googletest-src\\googletest\\src\\gtest_main.cc"
 }
 ]

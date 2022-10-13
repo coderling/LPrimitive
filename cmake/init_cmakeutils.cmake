@@ -1,8 +1,8 @@
 macro(L_InitCMakeUtils)
     set(name CMakeUtils)
     set(address "https://github.com/coderling/${name}.git")
-    set(version ${ARGV1})
-    message("find packae ${name} version ${tag}")
+    set(version ${ARGV0})
+    message("find packae ${name} version ${version}")
 
     set(is_already_add FALSE)
 
@@ -24,7 +24,7 @@ macro(L_InitCMakeUtils)
                 include(FetchContent)
             endif()
 
-            if(${version})
+            if(version)
                 message("update repo ${name} ${version}")
                 FetchContent_Declare(
                     ${name}
