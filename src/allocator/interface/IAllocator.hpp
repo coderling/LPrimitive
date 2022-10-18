@@ -1,10 +1,12 @@
 #pragma once
-namespace LPrimitive
+#include <type_traits>
+
+namespace CDL::Primitive
 {
 struct IAllocator
 {
     virtual ~IAllocator() {}
-    virtual void* Allocate(size_t size, const char* dbg_descirption, const char* dbg_filename, const int& dbg_line) = 0;
-    virtual void Free(void* ptr) = 0;
+    virtual void* Allocate(size_t size, size_t alignment = alignof(std::max_align_t)) = 0;
+    virtual void Free(void* ptr, size_t size) = 0;
 };
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

@@ -4,7 +4,7 @@
 #include "RefCountPtr.hpp"
 #include "ReferenceCounter.hpp"
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 template <typename Interface>
 class RefCountWeakPtr final
@@ -182,4 +182,4 @@ class RefCountWeakPtr final
     bool operator!=(const RefCountWeakPtr& rhs) const noexcept { return p_refcounter != rhs.p_refcounter; }
 };
 
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

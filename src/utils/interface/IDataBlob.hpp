@@ -2,7 +2,7 @@
 #include <cstdio>
 #include "IObject.hpp"
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 struct IDataBlob : public IObject
 {
@@ -17,4 +17,4 @@ struct IDataBlob : public IObject
     virtual const void* GetDataPointer() const = 0;
     virtual void Resize(const std::size_t& size) = 0;
 };
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

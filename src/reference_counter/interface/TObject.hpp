@@ -1,10 +1,10 @@
 #pragma once
 #include "ReferenceCounterObject.hpp"
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 template <typename Interface>
-requires std::derived_from<Interface, IObject>
+    requires std::derived_from<Interface, IObject>
 class TObject : public ReferenceCounterObject<Interface>
 {
    public:
@@ -68,7 +68,7 @@ class TObject : public ReferenceCounterObject<Interface>
 
 #define IMPLEMENT_CONSTRUCT_STATEMENT(CLASS_TYPE, ...)                                                                                     \
     template <typename ObjectType, typename AllocatorType>                                                                                 \
-    friend class LPrimitive::MakeReferenceCounter;                                                                                         \
+    friend class CDL::Primitive::MakeReferenceCounter;                                                                                     \
     explicit CLASS_TYPE(IReferenceCounter* p_refcounter __VA_OPT__(, )##__VA_ARGS__) noexcept
 
 #define IMPLEMENT_CONSTRUCT_DEFINE_HEAD(CLASS_TYPE, ...)                                                                                   \
@@ -76,10 +76,10 @@ class TObject : public ReferenceCounterObject<Interface>
 
 #define IMPLEMENT_CONSTRUCT_LOCALLY(CLASS_TYPE, ...)                                                                                       \
     template <typename ObjectType, typename AllocatorType>                                                                                 \
-    friend class LPrimitive::MakeReferenceCounter;                                                                                         \
+    friend class CDL::Primitive::MakeReferenceCounter;                                                                                     \
     explicit CLASS_TYPE(IReferenceCounter* p_refcounter __VA_OPT__(, )##__VA_ARGS__) noexcept
 
 #define IMPLEMENT_CONSTRUCT_INIT_LIST(TBASE, ...)                                                                                          \
         :TBASE(p_refcounter __VA_OPT__(,) ##__VA_ARGS__)
 
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

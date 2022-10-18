@@ -2,7 +2,7 @@
 
 #include <type_traits>
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 template <typename T>
 inline bool IsPowerOfTow(T val)
@@ -88,4 +88,4 @@ inline typename std::conditional<sizeof(T1) >= sizeof(T2), T1, T2>::type AlignDo
 
     return static_cast<T>(val) - static_cast<T>(val) % alignment;
 }
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

@@ -1,7 +1,7 @@
 #pragma once
 #include <chrono>
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 class Timer final
 {
@@ -14,4 +14,4 @@ class Timer final
    private:
     std::chrono::high_resolution_clock::time_point start_time;
 };
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

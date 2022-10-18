@@ -25,7 +25,7 @@
 // no custom ostream use std
 #include <ostream>
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 
 /**
@@ -117,6 +117,6 @@ class CallStack
     StackFrameInfo m_stack[NUM_FRAMES];
 };
 
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive
 
 #endif  // UTILS_CALLSTACK_H

@@ -8,7 +8,7 @@
 #include "Logger.hpp"
 #include "STDAllocator.hpp"
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 class VariableSizeAllocationsManager
 {
@@ -17,13 +17,13 @@ class VariableSizeAllocationsManager
 
    private:
     struct FreeBlockInfo;
+    using ByOffsetAllocatorType = STDAllocator<std::pair<const OffsetSizeType, FreeBlockInfo>, IAllocator>;
 
-    using TFreeBlocksByOffsetMap = std::
-        map<OffsetSizeType, FreeBlockInfo, std::less<OffsetSizeType>, STDAllocatorRawMem<std::pair<const OffsetSizeType, FreeBlockInfo>>>;
-    using TFreeBlocksBySizeMap = std::multimap<OffsetSizeType,
-                                               TFreeBlocksByOffsetMap::iterator,
-                                               std::less<OffsetSizeType>,
-                                               STDAllocatorRawMem<std::pair<const OffsetSizeType, TFreeBlocksByOffsetMap::iterator>>>;
+    using TFreeBlocksByOffsetMap = std::map<OffsetSizeType, FreeBlockInfo, std::less<OffsetSizeType>, ByOffsetAllocatorType>;
+
+    using BySizeAllocatorType = STDAllocator<std::pair<const OffsetSizeType, TFreeBlocksByOffsetMap::iterator>, IAllocator>;
+    using TFreeBlocksBySizeMap =
+        std::multimap<OffsetSizeType, TFreeBlocksByOffsetMap::iterator, std::less<OffsetSizeType>, BySizeAllocatorType>;
 
     struct FreeBlockInfo
     {
@@ -105,4 +105,4 @@ class VariableSizeAllocationsManager
     OffsetSizeType current_alignment;
 };
 
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

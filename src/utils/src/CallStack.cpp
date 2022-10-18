@@ -46,7 +46,7 @@
 #include <stdexcept>
 #endif
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 
 struct FreeDeleter
@@ -163,4 +163,4 @@ std::ostream& operator<<(std::ostream& stream, const CallStack& callstack)
     return stream;
 }
 
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

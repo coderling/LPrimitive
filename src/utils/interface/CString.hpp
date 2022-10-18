@@ -24,7 +24,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 
 //! \privatesection
@@ -229,4 +229,4 @@ class CString
 template <typename T>
 CString to_string(T value) noexcept;
 
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

@@ -10,7 +10,7 @@ typedef std::atomic<long> AtomicInt32;
 typedef std::atomic<long long> AtomicInt64;
 #endif
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 struct Atomics
 {
@@ -101,4 +101,4 @@ struct Atomics
 #endif
     }
 };
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

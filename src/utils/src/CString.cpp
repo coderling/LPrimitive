@@ -19,7 +19,7 @@
 #include <algorithm>
 #include <memory>
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 CString::CString(const char* cstr, size_t length)
 {
@@ -104,4 +104,4 @@ CString& CString::replace(size_type pos, size_type len, const CString& str) noex
     return *this;
 }
 
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

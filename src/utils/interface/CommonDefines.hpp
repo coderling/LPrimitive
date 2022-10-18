@@ -22,9 +22,9 @@ enum class L_RESULT
     TR_OK = 0
 };
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 inline bool Succeed(const L_RESULT& tr) { return tr >= static_cast<L_RESULT>(0); }
 
 inline bool Failed(const L_RESULT& tr) { return !Succeed(tr); }
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

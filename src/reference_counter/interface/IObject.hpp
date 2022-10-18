@@ -2,16 +2,16 @@
 #include "CommonDefines.hpp"
 #include "InterfaceUUID.hpp"
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 template <typename OtherInterface>
 class RefCountWeakPtr;
 template <typename OtherInterface>
 class RefCountPtr;
 class ReferenceCounter;
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 class IReferenceCounter;
 
@@ -24,13 +24,13 @@ class IObject
 
    protected:
     template <typename OtherInterface>
-    friend class LPrimitive::RefCountWeakPtr;
+    friend class CDL::Primitive::RefCountWeakPtr;
     template <typename OtherInterface>
-    friend class LPrimitive::RefCountPtr;
-    friend class LPrimitive::ReferenceCounter;
+    friend class CDL::Primitive::RefCountPtr;
+    friend class CDL::Primitive::ReferenceCounter;
     virtual long AddReference() = 0;
     virtual long Release() = 0;
     virtual IReferenceCounter* GetReferenceCounter() = 0;
     virtual void OnDestroy() = 0;
 };
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

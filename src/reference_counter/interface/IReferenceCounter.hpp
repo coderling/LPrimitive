@@ -1,6 +1,6 @@
 #pragma once
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 class IReferenceCounter
 {
@@ -16,4 +16,4 @@ class IReferenceCounter
     virtual void GetObject(class IObject** pp_object) = 0;
     virtual ~IReferenceCounter() {}
 };
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

@@ -1,6 +1,6 @@
 #include "Time.hpp"
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 
 Timer::Timer() noexcept { Reset(); }
@@ -20,4 +20,4 @@ float Timer::ElapsedTimef()
     const auto& time_span = std::chrono::duration_cast<std::chrono::duration<float>>(now - start_time);
     return time_span.count();
 }
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

@@ -8,7 +8,7 @@
 #include "IReferenceCounter.hpp"
 #include "SpinLock.hpp"
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 class ReferenceCounter final : public IReferenceCounter
 {
@@ -288,4 +288,4 @@ class ReferenceCounter final : public IReferenceCounter
     }
 };
 
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

@@ -1,17 +1,13 @@
 #include "VariableSizeAllocationsManager.hpp"
 #include "STDAllocator.hpp"
 
-using namespace LPrimitive;
+using namespace CDL::Primitive;
 
 VariableSizeAllocationsManager::VariableSizeAllocationsManager(const OffsetSizeType& max_size, IAllocator& allocator)
-    : free_block_by_offset(
-          STD_ALLOCATOR_RAWMEM(TFreeBlocksByOffsetMap::value_type, allocator, "allocation for map<OffsetSizeType, FreeBlockInfo>")),
-      free_block_by_size(STD_ALLOCATOR_RAWMEM(TFreeBlocksBySizeMap::value_type,
-                                              allocator,
-                                              "allocation for multimap<OffsetSizeType, "
-                                              "TFreeBlocksByOffsetMap::iterator>")),
-      free_size(max_size),
-      max_size(max_size)
+    : free_block_by_offset{BySizeAllocatorType{allocator}},
+      free_block_by_size{BySizeAllocatorType{allocator}},
+      free_size{max_size},
+      max_size{max_size}
 {
     AddNewBlock(0, max_size);
     ResetCurrentAlignment();

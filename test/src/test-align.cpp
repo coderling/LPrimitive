@@ -3,8 +3,7 @@
 #include <Align.hpp>
 #include <iostream>
 
-
-using namespace LPrimitive;
+using namespace CDL::Primitive;
 
 TEST(Align, IsPowerOfTow)
 {

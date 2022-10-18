@@ -6,7 +6,7 @@
 #include <string>
 #include <string_view>
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 #define STRINGIFY(x) #x
 #define STRINGIFY_BUILTIN(x) STRINGIFY(x)
@@ -57,4 +57,4 @@ std::string ConcatString(const ArgsType&... args)
     StreamOutput(sst, args...);
     return sst.str();
 }
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

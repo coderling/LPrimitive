@@ -3,7 +3,7 @@
 #include <string>
 #include "FormatString.hpp"
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 enum ELOG_LEVEL
 {
@@ -46,7 +46,7 @@ void Log(ELOG_LEVEL level, const char *file, const char *function, const int &li
 
     sst << "in " << file << ":" << line << " Func:" << function << "  :";
 
-    const auto &msg = LPrimitive::ConcatString(args...);
+    const auto &msg = CDL::Primitive::ConcatString(args...);
     if (level >= LOG_LV_ERROR)
         {
             std::cout << sst.str() << msg << std::endl;
@@ -63,7 +63,7 @@ template <bool throwException, typename... ArgsType>
 void LogFormat(
     ELOG_LEVEL level, const char *file, const char *function, const int &line, const std::string_view &format, const ArgsType &...args)
 {
-    const auto &msg = LPrimitive::FormatString(format, args...);
+    const auto &msg = CDL::Primitive::FormatString(format, args...);
     Log<throwException>(level, file, function, line, msg);
 }
 
@@ -76,19 +76,19 @@ void LogFormat(
 #define LOG(level, exception, ...)                                                                                                         \
     do                                                                                                                                     \
         {                                                                                                                                  \
-            LPrimitive::Log<exception>(level, __FILE__, __T_FUNC__, __LINE__ __VA_OPT__(, )##__VA_ARGS__);                                 \
+            CDL::Primitive::Log<exception>(level, __FILE__, __T_FUNC__, __LINE__ __VA_OPT__(, )##__VA_ARGS__);                             \
     } while (false)
 
 #define LOG_FORMAT(level, exception, format, ...)                                                                                          \
     do                                                                                                                                     \
         {                                                                                                                                  \
-            LPrimitive::LogFormat<exception>(level, __FILE__, __T_FUNC__, __LINE__ __VA_OPT__(, ) format, ##__VA_ARGS__);                  \
+            CDL::Primitive::LogFormat<exception>(level, __FILE__, __T_FUNC__, __LINE__ __VA_OPT__(, ) format, ##__VA_ARGS__);              \
     } while (false)
 
 #define LOG_INFO(...)                                                                                                                      \
     do                                                                                                                                     \
         {                                                                                                                                  \
-            LOG(LPrimitive::LOG_LV_INFO, false __VA_OPT__(, )##__VA_ARGS__);                                                               \
+            LOG(CDL::Primitive::LOG_LV_INFO, false __VA_OPT__(, )##__VA_ARGS__);                                                           \
     } while (false)
 
 #define LOG_INFO_EXPR(expr, ...)                                                                                                           \
@@ -103,7 +103,7 @@ void LogFormat(
 #define LOG_INFO_FORMAT(format, ...)                                                                                                       \
     do                                                                                                                                     \
         {                                                                                                                                  \
-            LOG_FORMAT(LPrimitive::LOG_LV_INFO, false, format __VA_OPT__(, )##__VA_ARGS__);                                                \
+            LOG_FORMAT(CDL::Primitive::LOG_LV_INFO, false, format __VA_OPT__(, )##__VA_ARGS__);                                            \
     } while (false)
 
 #define LOG_INFO_EXPR_FORMAT(expr, format, ...)                                                                                            \
@@ -118,7 +118,7 @@ void LogFormat(
 #define LOG_WARNING(...)                                                                                                                   \
     do                                                                                                                                     \
         {                                                                                                                                  \
-            LOG(LPrimitive::LOG_LV_WARNING, false __VA_OPT__(, )##__VA_ARGS__);                                                            \
+            LOG(CDL::Primitive::LOG_LV_WARNING, false __VA_OPT__(, )##__VA_ARGS__);                                                        \
     } while (false)
 
 #define LOG_WARNING_EXPR(expr, ...)                                                                                                        \
@@ -133,7 +133,7 @@ void LogFormat(
 #define LOG_WARNING_FORMAT(format, ...)                                                                                                    \
     do                                                                                                                                     \
         {                                                                                                                                  \
-            LOG_FORMAT(LPrimitive::LOG_LV_WARNING, false, format __VA_OPT__(, )##__VA_ARGS__);                                             \
+            LOG_FORMAT(CDL::Primitive::LOG_LV_WARNING, false, format __VA_OPT__(, )##__VA_ARGS__);                                         \
     } while (false)
 
 #define LOG_WARNING_EXPR_FORMAT(expr, format, ...)                                                                                         \
@@ -148,7 +148,7 @@ void LogFormat(
 #define LOG_ERROR(...)                                                                                                                     \
     do                                                                                                                                     \
         {                                                                                                                                  \
-            LOG(LPrimitive::LOG_LV_ERROR, false __VA_OPT__(, )##__VA_ARGS__);                                                              \
+            LOG(CDL::Primitive::LOG_LV_ERROR, false __VA_OPT__(, )##__VA_ARGS__);                                                          \
     } while (false)
 
 #define LOG_ERROR_EXPR(expr, ...)                                                                                                          \
@@ -163,7 +163,7 @@ void LogFormat(
 #define LOG_ERROR_EXCEPTION(...)                                                                                                           \
     do                                                                                                                                     \
         {                                                                                                                                  \
-            LOG(LPrimitive::LOG_LV_ERROR, true __VA_OPT__(, )##__VA_ARGS__);                                                               \
+            LOG(CDL::Primitive::LOG_LV_ERROR, true __VA_OPT__(, )##__VA_ARGS__);                                                           \
     } while (false)
 
 #define LOG_ERROR_EXPR_EXCEPTION(expr, format, ...)                                                                                        \
@@ -178,7 +178,7 @@ void LogFormat(
 #define LOG_ERROR_FORMAT(format, ...)                                                                                                      \
     do                                                                                                                                     \
         {                                                                                                                                  \
-            LOG_FORMAT(LPrimitive::LOG_LV_ERROR, false, format __VA_OPT__(, )##__VA_ARGS__);                                               \
+            LOG_FORMAT(CDL::Primitive::LOG_LV_ERROR, false, format __VA_OPT__(, )##__VA_ARGS__);                                           \
     } while (false)
 
 #define LOG_ERROR_EXPR_FORMAT(expr, format, ...)                                                                                           \
@@ -193,7 +193,7 @@ void LogFormat(
 #define LOG_ERROR_EXCEPTION_FORMAT(format, ...)                                                                                            \
     do                                                                                                                                     \
         {                                                                                                                                  \
-            LOG_FORMAT(LPrimitive::LOG_LV_ERROR, true, format __VA_OPT__(, )##__VA_ARGS__);                                                \
+            LOG_FORMAT(CDL::Primitive::LOG_LV_ERROR, true, format __VA_OPT__(, )##__VA_ARGS__);                                            \
     } while (false)
 
 #define LOG_ERROR_EXPR_EXCEPTION_FORMAT(expr, format, ...)                                                                                 \
@@ -208,7 +208,7 @@ void LogFormat(
 #define LOG_FATAL_ERROR(...)                                                                                                               \
     do                                                                                                                                     \
         {                                                                                                                                  \
-            LOG(LPrimitive::LOG_LV_FATAL_ERROR, false __VA_OPT__(, )##__VA_ARGS__);                                                        \
+            LOG(CDL::Primitive::LOG_LV_FATAL_ERROR, false __VA_OPT__(, )##__VA_ARGS__);                                                    \
     } while (false)
 
 #define LOG_FATAL_ERROR_EXPR(expr, format, ...)                                                                                            \
@@ -223,7 +223,7 @@ void LogFormat(
 #define LOG_FATAL_ERROR_EXCEPTION(...)                                                                                                     \
     do                                                                                                                                     \
         {                                                                                                                                  \
-            LOG(LPrimitive::LOG_LV_FATAL_ERROR, true __VA_OPT__(, )##__VA_ARGS__);                                                         \
+            LOG(CDL::Primitive::LOG_LV_FATAL_ERROR, true __VA_OPT__(, )##__VA_ARGS__);                                                     \
     } while (false)
 
 #define LOG_FATAL_ERROR_EXPR_EXCEPTION(expr, ...)                                                                                          \
@@ -231,14 +231,14 @@ void LogFormat(
         {                                                                                                                                  \
             if (!(expr))                                                                                                                   \
                 {                                                                                                                          \
-                    LOG(LPrimitive::LOG_LV_FATAL_ERROR, true __VA_OPT__(, )##__VA_ARGS__);                                                 \
+                    LOG(CDL::Primitive::LOG_LV_FATAL_ERROR, true __VA_OPT__(, )##__VA_ARGS__);                                             \
                 }                                                                                                                          \
     } while (false)
 
 #define LOG_FATAL_ERROR_FORMAT(format, ...)                                                                                                \
     do                                                                                                                                     \
         {                                                                                                                                  \
-            LOG_FORMAT(LPrimitive::LOG_LV_FATAL_ERROR, false, format __VA_OPT__(, )##__VA_ARGS__);                                         \
+            LOG_FORMAT(CDL::Primitive::LOG_LV_FATAL_ERROR, false, format __VA_OPT__(, )##__VA_ARGS__);                                     \
     } while (false)
 
 #define LOG_FATAL_ERROR_EXPR_FORMAT(expr, format, ...)                                                                                     \
@@ -253,7 +253,7 @@ void LogFormat(
 #define LOG_FATAL_ERROR_EXCEPTION_FORMAT(format, ...)                                                                                      \
     do                                                                                                                                     \
         {                                                                                                                                  \
-            LOG_FORMAT(LPrimitive::LOG_LV_FATAL_ERROR, true, format __VA_OPT__(, )##__VA_ARGS__);                                          \
+            LOG_FORMAT(CDL::Primitive::LOG_LV_FATAL_ERROR, true, format __VA_OPT__(, )##__VA_ARGS__);                                      \
     } while (false)
 
 #define LOG_FATAL_ERROR_EXPR_EXCEPTION_FORMAT(expr, format, ...)                                                                           \
@@ -264,4 +264,4 @@ void LogFormat(
                     LOG_FATAL_ERROR_EXCEPTION_FORMAT(format __VA_OPT__(, )##__VA_ARGS__);                                                  \
                 }                                                                                                                          \
     } while (false)
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

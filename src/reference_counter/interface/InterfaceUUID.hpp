@@ -4,7 +4,7 @@
 #include "HashUtils.hpp"
 #include "Logger.hpp"
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 struct IUUID_DATA
 {
@@ -28,7 +28,7 @@ struct IUUID
 
 static constexpr const IUUID UUID_UNKNOWN = {"UUID_UNKNOWN", {0, 0, 0, {0, 0, 0, 0, 0, 0, 0, 0}}};
 
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive
 
 #define STR(x) #x
 
@@ -39,16 +39,16 @@ static constexpr const IUUID UUID_UNKNOWN = {"UUID_UNKNOWN", {0, 0, 0, {0, 0, 0,
 namespace std
 {
 template <>
-struct hash<LPrimitive::IUUID>
+struct hash<CDL::Primitive::IUUID>
 {
    public:
-    size_t operator()(const LPrimitive::IUUID& uuid) const
+    size_t operator()(const CDL::Primitive::IUUID& uuid) const
     {
         size_t hash_va = 0;
-        LPrimitive::ComputeHash(hash_va, uuid.data.d1, uuid.data.d3, uuid.data.d3);
+        CDL::Primitive::ComputeHash(hash_va, uuid.data.d1, uuid.data.d3, uuid.data.d3);
         for (int i = 0; i < 8; ++i)
             {
-                LPrimitive::HashCombine(hash_va, uuid.data.array[i]);
+                CDL::Primitive::HashCombine(hash_va, uuid.data.array[i]);
             }
 
         return hash_va;

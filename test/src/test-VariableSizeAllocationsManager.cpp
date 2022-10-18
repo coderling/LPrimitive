@@ -2,11 +2,11 @@
 #include <DefaultMemoryAllocator.hpp>
 #include <VariableSizeAllocationsManager.hpp>
 
-using namespace LPrimitive;
+using namespace CDL::Primitive;
 TEST(VariableSizeAllocationsManager, Allocate_And_Free)
 {
     using OffsetSizeType = VariableSizeAllocationsManager::OffsetSizeType;
-    auto& allocator = DefaultMemoryAllocator::GetGobalAllocator();
+    DefaultMemoryAllocator allocator("default heap allocator", NullChunk());
 
     VariableSizeAllocationsManager alloc_mgr(128, allocator);
     EXPECT_EQ(alloc_mgr.FreeSize(), (OffsetSizeType)128);
@@ -112,7 +112,7 @@ TEST(VariableSizeAllocationsManager, Allocate_And_Free)
 TEST(VariableSizeAllocationsManager, FreeOrder)
 {
     using OffsetSizeType = VariableSizeAllocationsManager::OffsetSizeType;
-    auto& allocator = DefaultMemoryAllocator::GetGobalAllocator();
+    DefaultMemoryAllocator allocator("default heap allocator", NullChunk());
     const size_t alloc_count = 6;
     VariableSizeAllocationsManager::Allocation allocations[alloc_count];
     int release_order[alloc_count];

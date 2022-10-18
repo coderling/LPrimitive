@@ -10,8 +10,8 @@ TEST(FormatString, Output)
     std::fstream fs(filename, std::ios::out | std::ios::binary | std::ios::in | std::ios::trunc);
     EXPECT_TRUE(fs.is_open());
 
-    LPrimitive::StreamOutput(fs, static_cast<double>(3.14));
-    LPrimitive::StreamOutput(fs, "abc");
+    CDL::Primitive::StreamOutput(fs, static_cast<double>(3.14));
+    CDL::Primitive::StreamOutput(fs, "abc");
 
     fs.seekp(0);
     double d = 0;
@@ -34,8 +34,8 @@ TEST(FormatString, StreamFormatOutput)
     std::string name = "coderling";
     int age = 30;
     std::string str;
-    LPrimitive::StreamFormatOutput(fs, format, name, age);
-    LPrimitive::StreamFormatOutput(fs, format, name, age, "rest");
+    CDL::Primitive::StreamFormatOutput(fs, format, name, age);
+    CDL::Primitive::StreamFormatOutput(fs, format, name, age, "rest");
     fs.seekp(0);
     std::getline(fs, str);
     EXPECT_EQ(str, "my name is coderling age is 30");
@@ -49,8 +49,8 @@ TEST(FormatString, FormatString)
     constexpr std::string_view format = "my name is {} age is {}";
     std::string name = "coderling";
     int age = 30;
-    std::string str = LPrimitive::FormatString(format, name, age);
+    std::string str = CDL::Primitive::FormatString(format, name, age);
     EXPECT_EQ(str, "my name is coderling age is 30");
-    str = LPrimitive::FormatString(format, name, age, "rest");
+    str = CDL::Primitive::FormatString(format, name, age, "rest");
     EXPECT_EQ(str, "my name is coderling age is 30");
 }

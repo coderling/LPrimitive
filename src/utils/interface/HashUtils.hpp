@@ -1,7 +1,7 @@
 #pragma once
 #include <functional>
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 // boost hash_combine
 template <typename T>
@@ -37,4 +37,4 @@ inline std::size_t HansRange(Iter begin, Iter end)
     return hash;
 }
 
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

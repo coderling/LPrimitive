@@ -5,17 +5,17 @@
 #include "IObject.hpp"
 #include "ReferenceCounter.hpp"
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 
 template <typename Interface>
-requires std::derived_from<Interface, IObject>
+    requires std::derived_from<Interface, IObject>
 class ReferenceCounterObject : public Interface
 {
     template <typename OtherInterface>
-    friend class LPrimitive::RefCountWeakPtr;
+    friend class CDL::Primitive::RefCountWeakPtr;
     template <typename OtherInterface>
-    friend class LPrimitive::RefCountPtr;
+    friend class CDL::Primitive::RefCountPtr;
 
     ReferenceCounter* p_refcounter;
 
@@ -64,7 +64,7 @@ class ReferenceCounterObject : public Interface
     template <typename AllocatorType>
     void* operator new(std::size_t size, AllocatorType* allocator, const char* description, const char* filename, const int& line)
     {
-        return allocator->Allocate(size, description, filename, line);
+        return allocator->Allocate(size);
     }
 };
 
@@ -132,6 +132,6 @@ class MakeReferenceCounter
 };
 
 #define MAKE_REF_OBJECT(ObjectType, allocator, description)                                                                                \
-    LPrimitive::MakeReferenceCounter<ObjectType, typename std::remove_reference<decltype(allocator)>::type>(&(allocator), description,     \
-                                                                                                            __FILE__, __LINE__)
-}  // namespace LPrimitive
+    CDL::Primitive::MakeReferenceCounter<ObjectType, typename std::remove_reference<decltype(allocator)>::type>(&(allocator), description, \
+                                                                                                                __FILE__, __LINE__)
+}  // namespace CDL::Primitive

@@ -3,7 +3,7 @@
 #include "Logger.hpp"
 #include "ReferenceCounter.hpp"
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 template <typename Interface>
 class RefCountPtr final
@@ -91,10 +91,9 @@ class RefCountPtr final
 
     // 模板构造函数
     template <typename OtherInterface>
-    requires std::derived_from<OtherInterface, Interface>
+        requires std::derived_from<OtherInterface, Interface>
 
-    RefCountPtr(const RefCountPtr<OtherInterface>& ref_ptr)
-    noexcept
+    RefCountPtr(const RefCountPtr<OtherInterface>& ref_ptr) noexcept
         : RefCountPtr<Interface>(ref_ptr.p_object)
     {
     }
@@ -108,10 +107,9 @@ class RefCountPtr final
 
     // 模板移动构造函数
     template <typename OtherInterface>
-    requires std::derived_from<OtherInterface, Interface>
+        requires std::derived_from<OtherInterface, Interface>
 
-    RefCountPtr(RefCountPtr<OtherInterface>&& ref_ptr)
-    noexcept
+    RefCountPtr(RefCountPtr<OtherInterface>&& ref_ptr) noexcept
         : p_object(std::move(ref_ptr.p_object))
     {
         ref_ptr.p_object = nullptr;
@@ -193,9 +191,9 @@ class RefCountPtr final
 
     // 赋值函数，模板
     template <typename OtherInterface>
-    requires std::derived_from<OtherInterface, Interface>
+        requires std::derived_from<OtherInterface, Interface>
 
-        RefCountPtr& operator=(const RefCountPtr<OtherInterface>& ref_ptr) noexcept
+    RefCountPtr& operator=(const RefCountPtr<OtherInterface>& ref_ptr) noexcept
     {
         return *this = static_cast<OtherInterface*>(ref_ptr.p_object);
     }
@@ -213,9 +211,9 @@ class RefCountPtr final
 
     // 模板，移动赋值函数 move copy
     template <typename OtherInterface>
-    requires std::derived_from<OtherInterface, Interface>
+        requires std::derived_from<OtherInterface, Interface>
 
-        RefCountPtr& operator=(RefCountPtr<OtherInterface>&& ref_ptr) noexcept
+    RefCountPtr& operator=(RefCountPtr<OtherInterface>&& ref_ptr) noexcept
     {
         if (p_object != ref_ptr.p_object)
             {
@@ -241,13 +239,17 @@ class RefCountPtr final
     Interface* RawPtr() const noexcept { return p_object; }
 
     template <typename OtherInterface>
-    requires std::derived_from<OtherInterface, IObject> OtherInterface* RawPtr() noexcept
+        requires std::derived_from<OtherInterface, IObject>
+    OtherInterface* RawPtr() noexcept
     {
         return Debug::StaticPointerCast<OtherInterface, Interface>(p_object);
     }
     template <typename OtherInterface>
-    requires std::derived_from<OtherInterface, IObject>
-    const OtherInterface* RawPtr() const noexcept { return Debug::StaticPointerCast<OtherInterface, Interface>(p_object); }
+        requires std::derived_from<OtherInterface, IObject>
+    const OtherInterface* RawPtr() const noexcept
+    {
+        return Debug::StaticPointerCast<OtherInterface, Interface>(p_object);
+    }
 
     // 隐式转换
     operator Interface*() noexcept { return RawPtr(); }
@@ -261,27 +263,31 @@ class RefCountPtr final
     const Interface** GetRawAddressOf() const noexcept { return &p_object; }
 
     template <typename OtherInterface>
-    requires std::derived_from<OtherInterface, Interface>
+        requires std::derived_from<OtherInterface, Interface>
 
-        OtherInterface** GetRawAddressOf() noexcept
+    OtherInterface** GetRawAddressOf() noexcept
     {
         return static_cast<OtherInterface**>(&p_object);
     }
 
    public:
     template <typename OtherInterface>
-    requires std::derived_from<OtherInterface, Interface>
+        requires std::derived_from<OtherInterface, Interface>
 
-        DDPtrHandle<OtherInterface> GetAddressOf()
-    noexcept { return DDPtrHandle<OtherInterface>(*this); }
+    DDPtrHandle<OtherInterface> GetAddressOf() noexcept
+    {
+        return DDPtrHandle<OtherInterface>(*this);
+    }
 
     template <typename OtherInterface>
-    requires std::derived_from<OtherInterface, Interface>
+        requires std::derived_from<OtherInterface, Interface>
 
-        DDPtrHandle<OtherInterface> GetAddressOf()
-    const noexcept { return DDPtrHandle<OtherInterface>(*this); }
+    DDPtrHandle<OtherInterface> GetAddressOf() const noexcept
+    {
+        return DDPtrHandle<OtherInterface>(*this);
+    }
 
     DDPtrHandle<Interface> operator&() noexcept { return GetAddressOf<Interface>(); }
     DDPtrHandle<Interface> operator&() const noexcept { return GetAddressOf<Interface>(); }
 };
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

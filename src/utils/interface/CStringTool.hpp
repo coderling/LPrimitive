@@ -3,7 +3,7 @@
 #include "CommonDefines.hpp"
 #include "DebugUtility.hpp"
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 inline bool Num(const char& c) { return c >= '0' && c <= '9'; }
 
@@ -118,4 +118,4 @@ inline wchar_t* CopyString(const wchar_t* cstr, const std::size_t& len)
 
 inline wchar_t* CopyString(const std::wstring_view& str) { return CopyString(str.data(), str.length()); }
 */
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

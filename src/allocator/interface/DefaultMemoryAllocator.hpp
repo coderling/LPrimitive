@@ -1,19 +1,11 @@
 #pragma once
 
-#include "CommonDefines.hpp"
-#include "IAllocator.hpp"
+#include "Allocator.hpp"
+#include "HeapAllocator.hpp"
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
-class DefaultMemoryAllocator final : public IAllocator
-{
-   public:
-    DefaultMemoryAllocator();
-    NODISCARD void* Allocate(size_t size, const char* dbg_descirption, const char* dbg_filename, const int& dbg_line) override;
-    void Free(void* ptr) override;
-    static DefaultMemoryAllocator& GetGobalAllocator();
+using DefaultMemoryAllocator = TAllocator<AllocateStrategy::HeapAllocator, NullChunk, NoLock, UnTracked>;
 
-    // no copy
-    NOCOPY_INPLACE(DefaultMemoryAllocator);
-};
-}  // namespace LPrimitive
+DefaultMemoryAllocator& GetGlobalAllocator();
+}  // namespace CDL::Primitive

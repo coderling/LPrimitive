@@ -5,7 +5,7 @@
 #include <Windows.h>
 #include <iostream>
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 inline FARPROC LoadDLL(const char* dll_name, const char* function_name)
 {
@@ -46,4 +46,4 @@ inline FARPROC LoadDLL(const char* dll_name, const char* function_name)
 }
 
 #endif  // PLATFORM_WINDOWS
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

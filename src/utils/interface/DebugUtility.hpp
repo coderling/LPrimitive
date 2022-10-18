@@ -6,7 +6,7 @@
 #include "FormatString.hpp"
 #include "Logger.hpp"
 
-namespace LPrimitive::Debug
+namespace CDL::Primitive::Debug
 {
 #define L_CHECK_OUTPUT(msg, ...)                                                                                                           \
     do                                                                                                                                     \
@@ -45,7 +45,7 @@ namespace LPrimitive::Debug
 #define L_ASSERT_FAILED_FORMAT(fmt, ...)                                                                                                   \
     do                                                                                                                                     \
         {                                                                                                                                  \
-            const auto& r_fmt = LPrimitive::FormatString(fmt __VA_OPT__(, )##__VA_ARGS__);                                                 \
+            const auto& r_fmt = CDL::Primitive::FormatString(fmt __VA_OPT__(, )##__VA_ARGS__);                                             \
             LOG_ERROR("[Assert Fail]>", r_fmt);                                                                                            \
     } while (false)
 
@@ -61,7 +61,7 @@ namespace LPrimitive::Debug
 #define L_ASSERT_EXPR_FORMAT(expr, fmt, ...)                                                                                               \
     do                                                                                                                                     \
         {                                                                                                                                  \
-            const auto& r_fmt = LPrimitive::FormatString("{}{}{}{}", "check_expr:", #expr, " failed ", fmt);                               \
+            const auto& r_fmt = CDL::Primitive::FormatString("{}{}{}{}", "check_expr:", #expr, " failed ", fmt);                           \
             L_ASSERT_FORMAT(expr, r_fmt __VA_OPT__(, )##__VA_ARGS__);                                                                      \
     } while (false)
 
@@ -110,7 +110,7 @@ namespace LPrimitive::Debug
         {                                                                                                                                  \
             if (!(expr))                                                                                                                   \
                 {                                                                                                                          \
-                    const auto& r_fmt = LPrimitive::FormatString("{}{}{}{}", "check_expr:", #expr, " failed ", fmt);                       \
+                    const auto& r_fmt = CDL::Primitive::FormatString("{}{}{}{}", "check_expr:", #expr, " failed ", fmt);                   \
                     L_CHECK_OUTPUT_FORMAT(r_fmt __VA_OPT__(, )##__VA_ARGS__);                                                              \
                 }                                                                                                                          \
     } while (false)
@@ -142,4 +142,4 @@ inline DestType* StaticPointerCast(SourceType* s_ptr)
     return static_cast<DestType*>(s_ptr);
 }
 
-}  // namespace LPrimitive::Debug
+}  // namespace CDL::Primitive::Debug

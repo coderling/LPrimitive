@@ -1,7 +1,7 @@
 #pragma once
 #include <stdint.h>
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 struct Misc
 {
@@ -18,5 +18,11 @@ struct Misc
 
         return lsb;
     }
+
+    template <typename T1, typename T2>
+    inline static T1* PtrAdd(T1* l, T2 add) noexcept
+    {
+        return (T1*)(uintptr_t(l) + uintptr_t(add));
+    }
 };
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

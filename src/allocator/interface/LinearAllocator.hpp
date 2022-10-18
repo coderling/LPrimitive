@@ -1,0 +1,94 @@
+#pragma once
+#include <stdint.h>
+#include <cassert>
+#include <type_traits>
+
+#include "Align.hpp"
+#include "CommonDefines.hpp"
+#include "Misc.hpp"
+
+namespace CDL::Primitive::AllocateStrategy
+{
+
+/*
+1. allocate linearly
+2. free memory back up to specified point, not support free individual block
+
+*/
+class LinearAllocator
+{
+    void* p_begin;
+    size_t size;
+    size_t cur;
+
+   public:
+    LinearAllocator(void* _p_begin, void* _p_end) noexcept
+        : p_begin{_p_begin},
+          size{uintptr_t(_p_end) - uintptr_t(_p_begin)}
+    {
+    }
+
+    template <typename Chunk>
+    explicit LinearAllocator(const Chunk& chunk)
+        : LinearAllocator{chunk.Begin(), chunk.End()}
+    {
+    }
+
+    NOCOPY_INPLACE(LinearAllocator);
+
+    LinearAllocator(LinearAllocator&& rhs) noexcept { this->swap(rhs); }
+    LinearAllocator& operator=(LinearAllocator&& rhs) noexcept
+    {
+        if (this != &rhs)
+            {
+                this->swap(rhs);
+            }
+
+        return *this;
+    }
+
+    ~LinearAllocator() noexcept = default;
+
+    void* Allocate(size_t size, size_t alignment = alignof(std::max_align_t))
+    {
+        void* const ptr = AlignUp(GetCurrent(), alignment);
+        void* const e_ptr = Misc::PtrAdd(ptr, size);
+        bool suc = e_ptr <= End();
+        if (suc)
+            {
+                SetCurrent(e_ptr);
+                return ptr;
+            }
+
+        return nullptr;
+    }
+
+    void* GetCurrent() noexcept { return Misc::PtrAdd(p_begin, cur); }
+
+    void Rewind(void* ptr) noexcept
+    {
+        assert(ptr >= p_begin && ptr < End());
+        SetCurrent(ptr);
+    }
+
+    void Reset() noexcept { Rewind(p_begin); }
+
+    size_t MaxSize() const noexcept { return size; }
+
+    size_t Available() const noexcept { return size - cur; }
+
+    void swap(LinearAllocator& rhs) noexcept
+    {
+        std::swap(p_begin, rhs.p_begin);
+        std::swap(size, rhs.size);
+        std::swap(cur, rhs.cur);
+    }
+
+    void* Begin() noexcept { return p_begin; }
+
+   private:
+    void* End() const noexcept { return Misc::PtrAdd(p_begin, size); }
+
+    void SetCurrent(void* ptr) { cur = static_cast<size_t>(uintptr_t(ptr) - uintptr_t(p_begin)); }
+};
+}  // namespace CDL::Primitive::AllocateStrategy

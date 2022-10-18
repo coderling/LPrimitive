@@ -9,7 +9,7 @@
 #define PAUSE()
 #endif
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 void Spinlock::Pause() noexcept { PAUSE(); }
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

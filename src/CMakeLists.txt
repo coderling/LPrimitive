@@ -16,7 +16,6 @@ target_sources(Primitive
     utils/src/DataBlob.cpp
     utils/src/CString.cpp
 
-    allocator/src/DefaultMemoryAllocator.cpp
     allocator/src/VariableSizeAllocationsManager.cpp
 
     PUBLIC
@@ -24,6 +23,9 @@ target_sources(Primitive
     allocator/interface/DefaultMemoryAllocator.hpp
     allocator/interface/VariableSizeAllocationsManager.hpp
     allocator/interface/STDAllocator.hpp
+    allocator/interface/HeapAllocator.hpp
+    allocator/interface/LinearAllocator.hpp
+    allocator/interface/Allocator.hpp
 
     reference_counter/interface/InterfaceUUID.hpp
     reference_counter/interface/IObject.hpp

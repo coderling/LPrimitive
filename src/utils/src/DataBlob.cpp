@@ -3,11 +3,11 @@
 #include "DefaultMemoryAllocator.hpp"
 #include "Logger.hpp"
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 RefCountPtr<DataBlob> DataBlob::Create(const std::size_t& size, const void* p_data)
 {
-    auto raw_ptr = MAKE_REF_OBJECT(DataBlob, DefaultMemoryAllocator::GetGobalAllocator(), "DataBlob")(size, p_data);
+    auto raw_ptr = MAKE_REF_OBJECT(DataBlob, GetGlobalAllocator(), "DataBlob")(size, p_data);
     return RefCountPtr<DataBlob>(raw_ptr);
 }
 
@@ -42,4 +42,4 @@ void DataBlob::Resize(const std::size_t& size) { data_buffer.resize(size); }
 
 void DataBlob::OnDestroy() {}
 
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

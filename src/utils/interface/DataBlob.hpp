@@ -3,7 +3,7 @@
 #include "RefCountPtr.hpp"
 #include "TObject.hpp"
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 class DataBlob final : public TObject<IDataBlob>
 {
@@ -44,4 +44,4 @@ class DataBlob final : public TObject<IDataBlob>
    private:
     IMPLEMENT_CONSTRUCT_STATEMENT(DataBlob, std::size_t size = 0, const void* p_data = nullptr);
 };
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive

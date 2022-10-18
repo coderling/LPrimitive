@@ -8,7 +8,7 @@
 #include <atomic>
 #include "CommonDefines.hpp"
 
-namespace LPrimitive
+namespace CDL::Primitive
 {
 class Spinlock
 {
@@ -43,4 +43,4 @@ class Spinlock
    private:
     void Pause() noexcept;
 };
-}  // namespace LPrimitive
+}  // namespace CDL::Primitive
