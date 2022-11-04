@@ -2,14 +2,14 @@
 add_library(Primitive STATIC)
 add_library(LGL::Primitive ALIAS Primitive)
 
-target_include_directories(Primitive
+L_target_include_directories(Primitive
     PUBLIC
     utils/interface
     allocator/interface
     reference_counter/interface
 )
 
-target_sources(Primitive
+L_target_sources(Primitive
     PRIVATE
     utils/src/SpinLock.cpp
     utils/src/Time.cpp

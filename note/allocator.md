@@ -6,7 +6,8 @@
 
 ## STDAllocator 实现，对接STL容器
 
-2. 适配自定义STL Allocator
+## 对象池/线程安全的对象池
 
 ## VariableSizeAllocationsManager 虚拟内存管理
 
+##

@@ -63,6 +63,10 @@ class LinearAllocator
         return nullptr;
     }
 
+    // can not spec free block, but we must define the function
+    // use STDAllocator
+    void Free(void*, size_t) noexcept {}
+
     void* GetCurrent() noexcept { return Misc::PtrAdd(p_begin, cur); }
 
     void Rewind(void* ptr) noexcept

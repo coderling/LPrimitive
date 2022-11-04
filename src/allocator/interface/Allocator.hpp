@@ -24,7 +24,6 @@ struct UnTracked
 
     void OnAllocate(void*, size_t, size_t) noexcept {}
 
-    void OnFree(void*) noexcept {}
     void OnFree(void*, size_t) noexcept {}
 
     void OnReset() noexcept {}
@@ -113,16 +112,6 @@ class TAllocator : public IAllocator
     T* Allocate(size_t count, size_t alignmet = alignof(std::max_align_t)) noexcept
     {
         return (T*)Allocate(count * sizeof(T), alignmet);
-    }
-
-    void Free(void* ptr) noexcept
-    {
-        if (ptr)
-            {
-                LockGuard guard(lock);
-                track.OnFree(ptr);
-                allocator.Free(ptr);
-            }
     }
 
     void Free(void* ptr, size_t size) noexcept override

@@ -3,7 +3,7 @@ project(LPrimitive VERSION 0.0.2)
 
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 include(init_cmakeUtils)
-L_InitCMakeUtils(0.0.1)
+L_InitCMakeUtils()
 L_init_project()
 
 L_add_buildsetting_interface_lib(BuildSetting)

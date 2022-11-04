@@ -13,7 +13,7 @@ class IReferenceCounter
     virtual long ReleaseWeakRef() = 0;
     virtual long GetNumOfWeakRef() const = 0;
 
-    virtual void GetObject(class IObject** pp_object) = 0;
+    virtual void GetObject(void** pp_object) = 0;
     virtual ~IReferenceCounter() {}
 };
 }  // namespace CDL::Primitive
