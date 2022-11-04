@@ -1,0 +1,8 @@
+add_requires("gtest")
+target("api-test")
+    set_kind("binary")
+    add_files("src/*.cpp")
+    add_packages("gtest")  
+    add_deps("primitive")  
+    add_rules("cm-cxflags")
+target_end()

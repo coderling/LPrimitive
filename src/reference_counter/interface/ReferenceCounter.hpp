@@ -215,7 +215,7 @@ class ReferenceCounter final : public IReferenceCounter
 
     inline long GetNumOfWeakRef() const override { return count_weakref; }
 
-    inline void GetObject(class IObject** pp_object) override
+    inline void GetObject(void** pp_object) override
     {
         // return ref and add strongref
         if (object_state != EObjectState::ALIVE)
@@ -271,7 +271,7 @@ class ReferenceCounter final : public IReferenceCounter
         if (object_state == EObjectState::ALIVE && ref_count > 1)
             {
                 // return ref
-                p_object_handle->QueryInterface(UUID_UNKNOWN, pp_object);
+                p_object_handle->QueryInterface(UUID_UNKNOWN, reinterpret_cast<IObject**>(pp_object));
             }
         Atomics::Decrement(count_strongref);
         // guard.~() releaes lock

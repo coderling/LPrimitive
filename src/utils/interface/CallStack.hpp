@@ -21,7 +21,7 @@
 #include <stdint.h>
 #include <typeinfo>
 
-#include <CString.hpp>
+#include "CString.hpp"
 // no custom ostream use std
 #include <ostream>
 

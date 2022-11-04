@@ -84,8 +84,6 @@ inline typename std::conditional<sizeof(T1) >= sizeof(T2), T1, T2>::type AlignDo
     static_assert(!std::is_pointer<T1>::value && !std::is_pointer<T2>::value, "types must not be pointers");
     using T = typename std::conditional<sizeof(T1) >= sizeof(T2), T1, T2>::type;
 
-    T tmp = +static_cast<T>(alignment - 1);
-
     return static_cast<T>(val) - static_cast<T>(val) % alignment;
 }
 }  // namespace CDL::Primitive
