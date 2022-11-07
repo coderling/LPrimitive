@@ -118,7 +118,7 @@ TEST(VariableSizeAllocationsManager, FreeOrder)
     int release_order[alloc_count];
     for (size_t index = 0; index < alloc_count; ++index)
         {
-            release_order[index] = index;
+            release_order[index] = static_cast<int>(index);
         }
 
     size_t num_do = 0;

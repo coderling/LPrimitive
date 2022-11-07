@@ -9,7 +9,6 @@ set_warnings("all", "error")
 
 includes("xmake/options.lua")
 includes("xmake/rules.lua")
-
 if is_plat("windows") then
     add_defines("_WINDOWS")
     add_defines("NOMINMAX")
