@@ -2,7 +2,6 @@ set_project("LPrimitive")
 
 set_version("0.0.1")
 
-add_repositories("coderling-repo https://github.com/coderling/xmake-repo.git")
 add_requires("xmake-utils")
 includes("xmake/xmake.lua")
 
