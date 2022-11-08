@@ -7,5 +7,10 @@ target("primitive")
     add_includedirs("utils/interface", {public=true})
     
     -- rules
-    add_rules("cm-cxflags")
+    add_rules("@xmake-utils/cm-cxflags")
+    add_rules("@xmake-utils/unit-test")
+
+    on_load(function(target) 
+        import("xmake-utils.foo")
+    end)
 target_end()

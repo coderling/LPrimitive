@@ -2,13 +2,14 @@ set_project("LPrimitive")
 
 set_version("0.0.1")
 
-add_rules("mode.debug", "mode.release", "mode.releasedbg")
+add_repositories("coderling-repo https://github.com/coderling/xmake-repo.git")
+add_requires("xmake-utils")
+includes("xmake/xmake.lua")
 
+add_rules("mode.debug", "mode.release", "mode.releasedbg")
 set_languages("c99", "c++20")
 set_warnings("all", "error")
 
-includes("xmake/options.lua")
-includes("xmake/rules.lua")
 if is_plat("windows") then
     add_defines("_WINDOWS")
     add_defines("NOMINMAX")
