@@ -6,6 +6,8 @@ target("primitive")
     add_files("utils/src/*.cpp")
     add_includedirs("utils/interface", {public=true})
     
+    add_headerfiles("allocator/interface/*.hpp", {prefixdir = "primitive"})
+    add_headerfiles("utils/interface/*.hpp", {prefixdir = "primitive"})
     -- rules
     add_rules("@xmake-utils/cm-cxflags")
     add_rules("@xmake-utils/unit-test")

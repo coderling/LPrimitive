@@ -1,1 +1,1 @@
-add_moduledirs("C:/Users/liangguilong/AppData/Local/.xmake/packages/x/xmake-utils/master/a5b477c83e284007bed9f933d407d625")
+add_moduledirs("C:/Users/liangguilong/AppData/Local/.xmake/packages/x/xmake-utils/master/7418f51b300b4f1d9539e175c770deed")
