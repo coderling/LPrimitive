@@ -49,8 +49,9 @@ class LinearAllocator
 
     ~LinearAllocator() noexcept = default;
 
-    void* Allocate(size_t size, size_t alignment = alignof(std::max_align_t))
+    void* Allocate(size_t size, size_t alignment = alignof(std::max_align_t), size_t offset = 0)
     {
+        assert(offset == 0);
         void* const ptr = AlignUp(GetCurrent(), alignment);
         void* const e_ptr = Misc::PtrAdd(ptr, size);
         bool suc = e_ptr <= End();

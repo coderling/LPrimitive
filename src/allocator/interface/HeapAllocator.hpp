@@ -14,11 +14,12 @@ class HeapAllocator
 
     explicit HeapAllocator(const NullChunk& chunk) {}
 
-    void* Allocate(size_t size, size_t alignment = alignof(std::max_align_t))
+    void* Allocate(size_t size, size_t alignment = alignof(std::max_align_t), size_t offset = 0)
     {
         alignment = (alignment < sizeof(void*)) ? sizeof(void*) : alignment;
         assert(IsPowerOfTow(alignment));
         assert((alignment % sizeof(void*)) == 0);
+        assert(offset == 0);
 
         void* p = nullptr;
 #if defined(_WIN32)

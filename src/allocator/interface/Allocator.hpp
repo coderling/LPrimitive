@@ -5,11 +5,13 @@
 
 #include "Align.hpp"
 #include "CommonDefines.hpp"
+#include "HeapChunk.hpp"
 #include "IAllocator.hpp"
 #include "Misc.hpp"
 
 namespace CDL::Primitive
 {
+#define CDL_DEFAULT_ALLOCATOR_NAME "cdl allocator"
 
 struct NoLock
 {
@@ -22,7 +24,7 @@ struct UnTracked
     UnTracked() noexcept = default;
     UnTracked(const char* name, void* ptr, size_t size) {}
 
-    void OnAllocate(void*, size_t, size_t) noexcept {}
+    void OnAllocate(void*, size_t, size_t, size_t offset, int flags) noexcept {}
 
     void OnFree(void*, size_t) noexcept {}
 
@@ -37,35 +39,15 @@ struct NullChunk
     size_t Size() const noexcept { return 0; }
 };
 
-class HeapChunk
-{
-    void* p_begin = nullptr;
-    void* p_end = nullptr;
-
-   public:
-    HeapChunk() noexcept = default;
-
-    explicit HeapChunk(size_t size)
-    {
-        if (size > 0)
-            {
-                p_begin = malloc(size);
-                p_end = Misc::PtrAdd(p_begin, size);
-            }
-    }
-
-    ~HeapChunk() noexcept { free(p_begin); }
-
-    NOCOPY_AND_NOMOVE(HeapChunk);
-};
-
 template <typename AllocateStrategy,
           typename MemoryStrategy = HeapChunk,
           typename LockStrategy = NoLock,
           typename TrackStrategy = UnTracked>
 class TAllocator : public IAllocator
 {
-    const char* name;
+#if CDL_NAME_ENABLED
+    const char* name = CDL_DEFAULT_ALLOCATOR_NAME;
+#endif
     MemoryStrategy chunk;
     AllocateStrategy allocator;
     LockStrategy lock;
@@ -74,11 +56,21 @@ class TAllocator : public IAllocator
     using LockGuard = std::lock_guard<LockStrategy>;
 
    public:
-    TAllocator() = default;
+    TAllocator() noexcept = default;
+    explicit TAllocator(const char* _name) noexcept
+        :
+#if CDL_NAME_ENABLED
+          name{_name}
+#endif
+    {
+    }
 
     template <typename... ARGS>
     TAllocator(const char* _name, size_t size, ARGS&&... args)
-        : name{_name},
+        :
+#if CDL_NAME_ENABLED
+          name{_name},
+#endif
           chunk{size},
           allocator{chunk, std::forward<ARGS>(args)...},
           track{name, chunk.Data(), chunk.Size()}
@@ -87,7 +79,10 @@ class TAllocator : public IAllocator
 
     template <typename... ARGS>
     TAllocator(const char* _name, MemoryStrategy&& _chunk, ARGS&&... args)
-        : name{_name},
+        :
+#if CDL_NAME_ENABLED
+          name{_name},
+#endif
           chunk{std::forward<MemoryStrategy>(chunk)},
           allocator{chunk, std::forward<ARGS>(args)...},
           track{name, chunk.Data(), chunk.Size()}
@@ -96,11 +91,11 @@ class TAllocator : public IAllocator
 
     NOCOPY_INPLACE(TAllocator);
 
-    void* Allocate(size_t size, size_t alignment = alignof(std::max_align_t)) noexcept override
+    void* Allocate(size_t size, size_t alignment = alignof(std::max_align_t), size_t offset = 0, int flags = 0) noexcept override
     {
         LockGuard guard(lock);
-        void* p = allocator.Allocate(size, alignment);
-        track.OnAllocate(p, size, alignment);
+        void* p = allocator.Allocate(size, alignment, offset);
+        track.OnAllocate(p, size, alignment, offset, flags);
         return p;
     }
 
@@ -109,9 +104,9 @@ class TAllocator : public IAllocator
     // 因为这里并不会在free()的时候调用析构函数
     template <typename T>
         requires std::is_trivially_destructible<T>::value
-    T* Allocate(size_t count, size_t alignmet = alignof(std::max_align_t)) noexcept
+    T* Allocate(size_t count, size_t alignmet = alignof(std::max_align_t), int flags = 0) noexcept
     {
-        return (T*)Allocate(count * sizeof(T), alignmet);
+        return (T*)Allocate(count * sizeof(T), alignmet, 0, flags);
     }
 
     void Free(void* ptr, size_t size) noexcept override
@@ -155,7 +150,22 @@ class TAllocator : public IAllocator
             }
     }
 
-    const char* GetName() const noexcept { return name; }
+    const char* GetName() const noexcept
+    {
+#if CDL_NAME_ENABLED
+        return name;
+#else
+        return CDL_DEFAULT_ALLOCATOR_NAME;
+#endif
+    }
+
+    void SetName(const char* name) const noexcept
+    {
+#if CDL_NAME_ENABLED
+        this->name = name;
+#else
+#endif
+    }
 
     AllocateStrategy& GetAllocateStrategy() noexcept { return allocator; }
     const AllocateStrategy& GetAllocateStrategy() const noexcept { return allocator; }
@@ -172,7 +182,9 @@ class TAllocator : public IAllocator
     friend void swap(TAllocator& lhs, TAllocator& rhs) noexcept
     {
         using std::swap;
+#if CDL_NAME_ENABLED
         swap(lhs.name, rhs.name);
+#endif
         swap(lhs.allocator, rhs.allocator);
         swap(lhs.chunk, rhs.chunk);
         swap(lhs.lock, rhs.lock);

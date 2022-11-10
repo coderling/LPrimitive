@@ -19,16 +19,18 @@ typename std::enable_if<!std::is_destructible<T>::value, void>::type Destruct(T*
 template <typename T, typename AllocatorType>
 struct STDAllocator
 {
+    AllocatorType& allocator;
+
    public:
     using value_type = T;
     using pointer = value_type*;
     using const_pointer = const value_type*;
     using reference = value_type&;
     using const_reference = const value_type&;
-    using size_type = std::size_t;
+    using size_type = size_t;
     using difference_type = std::ptrdiff_t;
 
-    STDAllocator(AllocatorType& allocator) noexcept
+    explicit STDAllocator(AllocatorType& allocator) noexcept
         : allocator(allocator)
     {
     }
@@ -51,16 +53,14 @@ struct STDAllocator
         typedef STDAllocator<U, AllocatorType> other;
     };
 
-    T* allocate(std::size_t count) { return reinterpret_cast<T*>(allocator.Allocate(count * sizeof(T), alignof(value_type))); }
+    T* allocate(size_t count) { return reinterpret_cast<T*>(allocator.Allocate(count * sizeof(value_type), 0)); }
 
     pointer address(reference r) { return &r; }
     const_pointer address(const_reference r) { return &r; }
 
-    void deallocate(T* p, std::size_t size) { allocator.Free(p, size * sizeof(value_type)); }
+    void deallocate(T* p, size_t size) { allocator.Free(p, size * sizeof(value_type)); }
 
     inline size_type max_size() const { return std::numeric_limits<size_type>::max() / sizeof(value_type); }
-
-    AllocatorType& allocator;
 };
 
 template <class T, class U, class A>

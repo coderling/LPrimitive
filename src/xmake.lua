@@ -8,10 +8,13 @@ target("primitive")
     
     add_headerfiles("allocator/interface/*.hpp", {prefixdir = "primitive"})
     add_headerfiles("utils/interface/*.hpp", {prefixdir = "primitive"})
+    
+    add_packages("EASTLLIB")  
+    
     -- rules
     add_rules("@xmake-utils/cm-cxflags")
-    add_rules("@xmake-utils/unit-test")
-
+    add_rules("mode-init")
+    add_rules("dep-eastl")
     on_load(function(target) 
         import("xmake-utils.foo")
     end)

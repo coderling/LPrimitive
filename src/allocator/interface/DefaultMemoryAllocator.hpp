@@ -7,6 +7,6 @@ namespace CDL::Primitive
 {
 using DefaultMemoryAllocator = TAllocator<AllocateStrategy::HeapAllocator, NullChunk, NoLock, UnTracked>;
 
-DefaultMemoryAllocator& GetGlobalAllocator();
+DefaultMemoryAllocator &GetGlobalAllocator();
 
 }  // namespace CDL::Primitive
