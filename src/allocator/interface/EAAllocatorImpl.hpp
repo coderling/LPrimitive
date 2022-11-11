@@ -117,4 +117,15 @@ class EAAllocator
     void set_name(const char* pName) { allocator.SetName(pName); }
 };
 
+template <typename AllocatorType>
+inline bool operator==(const EAAllocator<AllocatorType>& lhs, const EAAllocator<AllocatorType>& rhs)
+{
+    return lhs.allocator == rhs.allocator;
+}
+
+template <typename AllocatorType>
+inline bool operator!=(const EAAllocator<AllocatorType>& lhs, const EAAllocator<AllocatorType>& rhs)
+{
+    return !(lhs == rhs);
+}
 }  // namespace CDL::Primitive
