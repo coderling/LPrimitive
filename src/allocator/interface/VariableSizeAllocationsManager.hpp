@@ -1,12 +1,13 @@
 #pragma once
 // http://diligentgraphics.com/diligent-engine/architecture/d3d12/variable-size-memory-allocations-manager/
 
-#include <map>
+#include <EASTL/map.h>
 #include "Align.hpp"
 #include "DebugUtility.hpp"
+#include "EAAllocatorImpl.hpp"
 #include "IAllocator.hpp"
 #include "Logger.hpp"
-#include "STDAllocator.hpp"
+
 
 namespace CDL::Primitive
 {
@@ -17,13 +18,13 @@ class VariableSizeAllocationsManager
 
    private:
     struct FreeBlockInfo;
-    using ByOffsetAllocatorType = STDAllocator<std::pair<const OffsetSizeType, FreeBlockInfo>, IAllocator>;
+    using ByOffsetAllocatorType = EAAllocator<IAllocator>;
 
-    using TFreeBlocksByOffsetMap = std::map<OffsetSizeType, FreeBlockInfo, std::less<OffsetSizeType>, ByOffsetAllocatorType>;
+    using TFreeBlocksByOffsetMap = eastl::map<OffsetSizeType, FreeBlockInfo, std::less<OffsetSizeType>, ByOffsetAllocatorType>;
 
-    using BySizeAllocatorType = STDAllocator<std::pair<const OffsetSizeType, TFreeBlocksByOffsetMap::iterator>, IAllocator>;
+    using BySizeAllocatorType = EAAllocator<IAllocator>;
     using TFreeBlocksBySizeMap =
-        std::multimap<OffsetSizeType, TFreeBlocksByOffsetMap::iterator, std::less<OffsetSizeType>, BySizeAllocatorType>;
+        eastl::multimap<OffsetSizeType, TFreeBlocksByOffsetMap::iterator, std::less<OffsetSizeType>, BySizeAllocatorType>;
 
     struct FreeBlockInfo
     {

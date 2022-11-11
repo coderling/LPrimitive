@@ -1,4 +1,5 @@
 #include <EASTL/allocator.h>
+#include <EASTL/string.h>
 #include <EASTL/vector.h>
 #include <gtest/gtest.h>
 #include <EAAllocatorImpl.hpp>

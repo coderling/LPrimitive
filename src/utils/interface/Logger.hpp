@@ -1,6 +1,6 @@
 #pragma once
+#include <EASTL/string.h>
 #include <iostream>
-#include <string>
 #include "FormatString.hpp"
 
 namespace CDL::Primitive
@@ -14,14 +14,14 @@ enum ELOG_LEVEL
 };
 
 template <bool>
-inline void ThrowIf(const std::string &&msg)
+inline void ThrowIf(const eastl::string &&msg)
 {
 }
 
 template <>
-inline void ThrowIf<true>(const std::string &&msg)
+inline void ThrowIf<true>(const eastl::string &&msg)
 {
-    throw std::runtime_error(std::move(msg));
+    throw std::runtime_error(msg.c_str());
 }
 
 template <bool throwException, typename... ArgsType>
@@ -49,11 +49,11 @@ void Log(ELOG_LEVEL level, const char *file, const char *function, const int &li
     const auto &msg = CDL::Primitive::ConcatString(args...);
     if (level >= LOG_LV_ERROR)
         {
-            std::cout << sst.str() << msg << std::endl;
+            std::cout << sst.str() << msg.c_str() << std::endl;
         }
     else
         {
-            std::cout << sst.str() << msg << std::endl;
+            std::cout << sst.str() << msg.c_str() << std::endl;
         }
 
     ThrowIf<throwException>(std::move(msg));

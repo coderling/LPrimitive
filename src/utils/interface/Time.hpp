@@ -1,5 +1,6 @@
 #pragma once
-#include <chrono>
+
+#include <EASTL/chrono.h>
 
 namespace CDL::Primitive
 {
@@ -12,6 +13,6 @@ class Timer final
     float ElapsedTimef();
 
    private:
-    std::chrono::high_resolution_clock::time_point start_time;
+    eastl::chrono::high_resolution_clock::time_point start_time;
 };
 }  // namespace CDL::Primitive

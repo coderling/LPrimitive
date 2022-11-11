@@ -88,6 +88,23 @@ class EAAllocator
     {
     }
 
+    inline EAAllocator(const EAAllocator& alloc) noexcept
+        : allocator{alloc.allocator}
+
+    {
+    }
+
+    inline EAAllocator(const EAAllocator& alloc, const char* pName) noexcept
+        : allocator{alloc.allocator}
+    {
+    }
+
+    inline EAAllocator& operator=(const EAAllocator& alloc) noexcept
+    {
+        this->allocator = alloc.allocator;
+        return *this;
+    }
+
     void* allocate(size_t n, int flags = 0) { return allocator.Allocate(n, alignof(std::max_align_t), 0, flags); }
 
     void* allocate(size_t n, size_t alignment, size_t offset, int flags = 0) { return allocator.Allocate(n, alignment, offset, flags); }

@@ -5,14 +5,14 @@
 // ref:https://rigtorp.se/spinlock/
 // ref:https://en.cppreference.com/w/cpp/atomic/memory_order
 
-#include <atomic>
+#include <EASTL/atomic.h>
 #include "CommonDefines.hpp"
 
 namespace CDL::Primitive
 {
 class Spinlock
 {
-    std::atomic<bool> is_locked{false};
+    eastl::atomic<bool> is_locked{false};
 
    public:
     NOCOPY_AND_NOMOVE(Spinlock);
@@ -24,21 +24,24 @@ class Spinlock
         while (true)
             {
                 //
-                if (!is_locked.exchange(true, std::memory_order_acquire))
+                if (!is_locked.exchange(true, eastl::memory_order_acquire))
                     {
                         return;
                     }
 
-                while (is_locked.load(std::memory_order_relaxed))
+                while (is_locked.load(eastl::memory_order_relaxed))
                     {
                         // pause
                     }
             }
     }
 
-    bool try_Lock() noexcept { return !is_locked.load(std::memory_order_relaxed) && !is_locked.exchange(true, std::memory_order_acquire); }
+    bool try_Lock() noexcept
+    {
+        return !is_locked.load(eastl::memory_order_relaxed) && !is_locked.exchange(true, eastl::memory_order_acquire);
+    }
 
-    void unlock() noexcept { is_locked.store(false, std::memory_order_release); }
+    void unlock() noexcept { is_locked.store(false, eastl::memory_order_release); }
 
    private:
     void Pause() noexcept;

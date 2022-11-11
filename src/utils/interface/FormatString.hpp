@@ -1,10 +1,10 @@
 #pragma once
 
+#include <EASTL/string.h>
+#include <EASTL/string_view.h>
 #include <format>
 #include <iostream>
 #include <sstream>
-#include <string>
-#include <string_view>
 
 namespace CDL::Primitive
 {
@@ -30,31 +30,31 @@ void StreamOutput(StreamType& st, const FArgsType f_args, const ArgsType&... arg
 }
 
 template <typename StreamType, typename... ArgsType>
-void StreamFormatOutput(StreamType& st, const std::string_view& format, const ArgsType&... args)
+void StreamFormatOutput(StreamType& st, const eastl::string_view& format, const ArgsType&... args)
 {
     auto o = std::vformat(format, std::make_format_args(args...));
     StreamOutput(st, o);
 }
 
 template <typename... ArgsType>
-void FormatOutput(const std::string_view& format, const ArgsType&... args)
+void FormatOutput(const eastl::string_view& format, const ArgsType&... args)
 {
     StreamFormatOutput(std::cout, format, args...);
 }
 
 template <typename... ArgsType>
-std::string FormatString(const std::string_view& format, const ArgsType&... args)
+eastl::string FormatString(const eastl::string_view& format, const ArgsType&... args)
 {
     std::stringstream sst;
     StreamFormatOutput(sst, format, args...);
-    return sst.str();
+    return eastl::string(sst.str().data());
 }
 
 template <typename... ArgsType>
-std::string ConcatString(const ArgsType&... args)
+eastl::string ConcatString(const ArgsType&... args)
 {
     std::stringstream sst;
     StreamOutput(sst, args...);
-    return sst.str();
+    return eastl::string(sst.str().data());
 }
 }  // namespace CDL::Primitive
