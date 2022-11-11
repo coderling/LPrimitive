@@ -58,9 +58,8 @@ class TAllocator : public IAllocator
    public:
     TAllocator() noexcept = default;
     explicit TAllocator(const char* _name) noexcept
-        :
 #if CDL_NAME_ENABLED
-          name{_name}
+        : name{_name}
 #endif
     {
     }
