@@ -1,6 +1,6 @@
 #pragma once
 
-#include <utility>
+#include <EASTL/utility.h>
 
 #include "CommonDefines.hpp"
 namespace CDL::Primitive
@@ -33,7 +33,7 @@ class StaticChunk
 
     friend void swap(StaticChunk& lhs, StaticChunk& rhs) noexcept
     {
-        using std::swap;
+        using eastl::swap;
         swap(lhs.p_begin, rhs.p_begin);
         swap(lhs.p_end, rhs.p_end);
     }

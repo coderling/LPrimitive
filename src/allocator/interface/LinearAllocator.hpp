@@ -1,7 +1,8 @@
 #pragma once
+#include <EASTL/type_traits.h>
+#include <EASTL/utility.h>
+#include <assert.h>
 #include <stdint.h>
-#include <cassert>
-#include <type_traits>
 
 #include "Align.hpp"
 #include "CommonDefines.hpp"
@@ -84,9 +85,9 @@ class LinearAllocator
 
     void swap(LinearAllocator& rhs) noexcept
     {
-        std::swap(p_begin, rhs.p_begin);
-        std::swap(size, rhs.size);
-        std::swap(cur, rhs.cur);
+        eastl::swap(p_begin, rhs.p_begin);
+        eastl::swap(size, rhs.size);
+        eastl::swap(cur, rhs.cur);
     }
 
     void* Begin() noexcept { return p_begin; }

@@ -32,8 +32,8 @@ VariableSizeAllocationsManager::~VariableSizeAllocationsManager()
 }
 
 VariableSizeAllocationsManager::VariableSizeAllocationsManager(VariableSizeAllocationsManager&& rhs) noexcept
-    : free_block_by_offset(std::move(rhs.free_block_by_offset)),
-      free_block_by_size(std::move(rhs.free_block_by_size)),
+    : free_block_by_offset(eastl::move(rhs.free_block_by_offset)),
+      free_block_by_size(eastl::move(rhs.free_block_by_size)),
       free_size(rhs.free_size),
       max_size(rhs.max_size),
       current_alignment(rhs.current_alignment)
@@ -96,7 +96,7 @@ VariableSizeAllocationsManager::Allocation VariableSizeAllocationsManager::Alloc
                 }
             else
                 {
-                    current_alignment = std::min(alignment, current_alignment);
+                    current_alignment = eastl::min(alignment, current_alignment);
                 }
         }
 

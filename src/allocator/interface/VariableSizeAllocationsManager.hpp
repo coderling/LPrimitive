@@ -8,7 +8,6 @@
 #include "IAllocator.hpp"
 #include "Logger.hpp"
 
-
 namespace CDL::Primitive
 {
 class VariableSizeAllocationsManager
@@ -20,11 +19,11 @@ class VariableSizeAllocationsManager
     struct FreeBlockInfo;
     using ByOffsetAllocatorType = EAAllocator<IAllocator>;
 
-    using TFreeBlocksByOffsetMap = eastl::map<OffsetSizeType, FreeBlockInfo, std::less<OffsetSizeType>, ByOffsetAllocatorType>;
+    using TFreeBlocksByOffsetMap = eastl::map<OffsetSizeType, FreeBlockInfo, eastl::less<OffsetSizeType>, ByOffsetAllocatorType>;
 
     using BySizeAllocatorType = EAAllocator<IAllocator>;
     using TFreeBlocksBySizeMap =
-        eastl::multimap<OffsetSizeType, TFreeBlocksByOffsetMap::iterator, std::less<OffsetSizeType>, BySizeAllocatorType>;
+        eastl::multimap<OffsetSizeType, TFreeBlocksByOffsetMap::iterator, eastl::less<OffsetSizeType>, BySizeAllocatorType>;
 
     struct FreeBlockInfo
     {

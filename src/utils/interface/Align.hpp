@@ -1,6 +1,6 @@
 #pragma once
 
-#include <type_traits>
+#include <EASTL/type_traits.h>
 
 namespace CDL::Primitive
 {
@@ -15,7 +15,7 @@ inline bool IsPowerOfTow(T val)
 }
 
 template <typename T1, typename T2>
-inline typename std::conditional<sizeof(T1) >= sizeof(T2), T1, T2>::type AlignUp(T1 val, T2 alignment)
+inline typename eastl::conditional<sizeof(T1) >= sizeof(T2), T1, T2>::type AlignUp(T1 val, T2 alignment)
 {
     // 返回比val大的最少能被alignment整除的数
     // 1. T1,T2必须是相同的数据类型，涉及到位运算，符号位保持一致
@@ -25,9 +25,9 @@ inline typename std::conditional<sizeof(T1) >= sizeof(T2), T1, T2>::type AlignUp
     //     那么(alignment -1)二进制低位都是1，4-1：011，8-1：0111，取反则是低位都是0，高位时1，~(4-1):11...11100
     //	    取反后，去与某个数值&，保证低位都为0，这样就能被alignment整除。要取比val大的第一个能被alignment整除的
     //     加上alignment-1即可。
-    static_assert(std::is_unsigned<T1>::value == std::is_unsigned<T2>::value, "both types must be signed or unsigned");
-    static_assert(!std::is_pointer<T1>::value && !std::is_pointer<T2>::value, "types must not be pointers");
-    using T = typename std::conditional<sizeof(T1) >= sizeof(T2), T1, T2>::type;
+    static_assert(eastl::is_unsigned<T1>::value == eastl::is_unsigned<T2>::value, "both types must be signed or unsigned");
+    static_assert(!eastl::is_pointer<T1>::value && !eastl::is_pointer<T2>::value, "types must not be pointers");
+    using T = typename eastl::conditional<sizeof(T1) >= sizeof(T2), T1, T2>::type;
 
     if (!IsPowerOfTow(alignment)) return static_cast<T>(0);
 
@@ -41,7 +41,7 @@ inline PtrType* AlignUp(PtrType* ptr, AlignmentType alignment)
 }
 
 template <typename T1, typename T2>
-inline typename std::conditional<sizeof(T1) >= sizeof(T2), T1, T2>::type AlignDown(T1 val, T2 alignment)
+inline typename eastl::conditional<sizeof(T1) >= sizeof(T2), T1, T2>::type AlignDown(T1 val, T2 alignment)
 {
     // 返回比val大的最少能被alignment整除的数
     // 1. T1,T2必须是相同的数据类型，涉及到位运算，符号位保持一致
@@ -51,9 +51,9 @@ inline typename std::conditional<sizeof(T1) >= sizeof(T2), T1, T2>::type AlignDo
     //     那么(alignment -1)二进制低位都是1，4-1：011，8-1：0111，取反则是低位都是0，高位时1，~(4-1):11...11100
     //	    取反后，去与某个数值&，保证低位都为0，这样就能被alignment整除。要取比val大的第一个能被alignment整除的
     //     加上alignment-1即可。
-    static_assert(std::is_unsigned<T1>::value == std::is_unsigned<T2>::value, "both types must be signed or unsigned");
-    static_assert(!std::is_pointer<T1>::value && !std::is_pointer<T2>::value, "types must not be pointers");
-    using T = typename std::conditional<sizeof(T1) >= sizeof(T2), T1, T2>::type;
+    static_assert(eastl::is_unsigned<T1>::value == eastl::is_unsigned<T2>::value, "both types must be signed or unsigned");
+    static_assert(!eastl::is_pointer<T1>::value && !eastl::is_pointer<T2>::value, "types must not be pointers");
+    using T = typename eastl::conditional<sizeof(T1) >= sizeof(T2), T1, T2>::type;
 
     if (!IsPowerOfTow(alignment)) return static_cast<T>(0);
 
@@ -67,22 +67,22 @@ inline PtrType* AlignDown(PtrType* ptr, AlignmentType alignment)
 }
 
 template <typename T1, typename T2>
-inline typename std::conditional<sizeof(T1) >= sizeof(T2), T1, T2>::type AlignUpNonPow2(T1 val, T2 alignment)
+inline typename eastl::conditional<sizeof(T1) >= sizeof(T2), T1, T2>::type AlignUpNonPow2(T1 val, T2 alignment)
 {
-    static_assert(std::is_unsigned<T1>::value == std::is_unsigned<T2>::value, "both types must be signed or unsigned");
-    static_assert(!std::is_pointer<T1>::value && !std::is_pointer<T2>::value, "types must not be pointers");
-    using T = typename std::conditional<sizeof(T1) >= sizeof(T2), T1, T2>::type;
+    static_assert(eastl::is_unsigned<T1>::value == eastl::is_unsigned<T2>::value, "both types must be signed or unsigned");
+    static_assert(!eastl::is_pointer<T1>::value && !eastl::is_pointer<T2>::value, "types must not be pointers");
+    using T = typename eastl::conditional<sizeof(T1) >= sizeof(T2), T1, T2>::type;
 
     T tmp = static_cast<T>(val) + static_cast<T>(alignment - 1);
 
     return tmp - tmp % alignment;
 }
 template <typename T1, typename T2>
-inline typename std::conditional<sizeof(T1) >= sizeof(T2), T1, T2>::type AlignDownNonPow2(T1 val, T2 alignment)
+inline typename eastl::conditional<sizeof(T1) >= sizeof(T2), T1, T2>::type AlignDownNonPow2(T1 val, T2 alignment)
 {
-    static_assert(std::is_unsigned<T1>::value == std::is_unsigned<T2>::value, "both types must be signed or unsigned");
-    static_assert(!std::is_pointer<T1>::value && !std::is_pointer<T2>::value, "types must not be pointers");
-    using T = typename std::conditional<sizeof(T1) >= sizeof(T2), T1, T2>::type;
+    static_assert(eastl::is_unsigned<T1>::value == eastl::is_unsigned<T2>::value, "both types must be signed or unsigned");
+    static_assert(!eastl::is_pointer<T1>::value && !eastl::is_pointer<T2>::value, "types must not be pointers");
+    using T = typename eastl::conditional<sizeof(T1) >= sizeof(T2), T1, T2>::type;
 
     return static_cast<T>(val) - static_cast<T>(val) % alignment;
 }

@@ -1,17 +1,18 @@
 #include "DataBlob.hpp"
+#include <EASTL/memory.h>
 #include <iostream>
 #include "DefaultMemoryAllocator.hpp"
 #include "Logger.hpp"
 
 namespace CDL::Primitive
 {
-RefCountPtr<DataBlob> DataBlob::Create(const std::size_t& size, const void* p_data)
+RefCountPtr<DataBlob> DataBlob::Create(const size_t& size, const void* p_data)
 {
     auto raw_ptr = MAKE_REF_OBJECT(DataBlob, GetGlobalAllocator(), "DataBlob")(size, p_data);
     return RefCountPtr<DataBlob>(raw_ptr);
 }
 
-IMPLEMENT_CONSTRUCT_DEFINE_HEAD(DataBlob, std::size_t size, const void* p_data)
+IMPLEMENT_CONSTRUCT_DEFINE_HEAD(DataBlob, size_t size, const void* p_data)
 IMPLEMENT_CONSTRUCT_INIT_LIST(TBase), data_buffer(size)
 {
     Resize(size);
@@ -19,7 +20,7 @@ IMPLEMENT_CONSTRUCT_INIT_LIST(TBase), data_buffer(size)
         {
             if (p_data != nullptr)
                 {
-                    std::memcpy(data_buffer.data(), p_data, size);
+                    memcpy(data_buffer.data(), p_data, size);
                 }
         }
 }
@@ -28,7 +29,7 @@ DataBlob::~DataBlob() noexcept {}
 
 IMPLEMENT_QUERYINTERFACE(DataBlob, TBase, IDataBlob)
 
-std::size_t DataBlob::GetDataSize() const { return data_buffer.size(); }
+size_t DataBlob::GetDataSize() const { return data_buffer.size(); }
 
 void* DataBlob::GetDataPointer()
 {
@@ -38,7 +39,7 @@ void* DataBlob::GetDataPointer()
 
 const void* DataBlob::GetDataPointer() const { return data_buffer.data(); }
 
-void DataBlob::Resize(const std::size_t& size) { data_buffer.resize(size); }
+void DataBlob::Resize(const size_t& size) { data_buffer.resize(size); }
 
 void DataBlob::OnDestroy() {}
 

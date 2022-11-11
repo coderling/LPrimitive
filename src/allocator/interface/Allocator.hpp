@@ -1,4 +1,5 @@
 #pragma once
+#include <EASTL/utility.h>
 #include <concepts>
 #include <mutex>
 #include <type_traits>
@@ -71,7 +72,7 @@ class TAllocator : public IAllocator
           name{_name},
 #endif
           chunk{size},
-          allocator{chunk, std::forward<ARGS>(args)...},
+          allocator{chunk, eastl::forward<ARGS>(args)...},
           track{GetName(), chunk.Data(), chunk.Size()}
     {
     }
@@ -82,8 +83,8 @@ class TAllocator : public IAllocator
 #if CDL_NAME_ENABLED
           name{_name},
 #endif
-          chunk{std::forward<MemoryStrategy>(chunk)},
-          allocator{chunk, std::forward<ARGS>(args)...},
+          chunk{eastl::forward<MemoryStrategy>(chunk)},
+          allocator{chunk, eastl::forward<ARGS>(args)...},
           track{GetName(), chunk.Data(), chunk.Size()}
     {
     }
@@ -102,7 +103,7 @@ class TAllocator : public IAllocator
     // trivially destructible对象的内存可以在不调用析构函数的情况下被重用，不允许申请非trivially destructible 的对象
     // 因为这里并不会在free()的时候调用析构函数
     template <typename T>
-        requires std::is_trivially_destructible<T>::value
+        requires eastl::is_trivially_destructible<T>::value
     T* Allocate(size_t count, size_t alignmet = alignof(std::max_align_t), int flags = 0) noexcept
     {
         return (T*)Allocate(count * sizeof(T), alignmet, 0, flags);
@@ -136,7 +137,7 @@ class TAllocator : public IAllocator
     T* MakeObject(ARGS&&... args)
     {
         void* const p = this->Allocate(sizeof(T), alignment);
-        return p ? new (p) T(std::forward<ARGS>(args)...) : nullptr;
+        return p ? new (p) T(eastl::forward<ARGS>(args)...) : nullptr;
     }
 
     template <typename T>
@@ -175,12 +176,12 @@ class TAllocator : public IAllocator
     MemoryStrategy& GetMemoryStrategy() noexcept { return chunk; }
     const MemoryStrategy& GetMemoryStrategy() const noexcept { return chunk; }
 
-    void SetTrackStrategy(TrackStrategy _track) noexcept { std::swap(track, _track); }
+    void SetTrackStrategy(TrackStrategy _track) noexcept { eastl::swap(track, _track); }
 
     // https://en.cppreference.com/w/cpp/named_req/Swappable
     friend void swap(TAllocator& lhs, TAllocator& rhs) noexcept
     {
-        using std::swap;
+        using eastl::swap;
 #if CDL_NAME_ENABLED
         swap(lhs.name, rhs.name);
 #endif
