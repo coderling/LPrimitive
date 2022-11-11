@@ -1,3 +1,5 @@
+#pragma once
+
 #include <EASTL/allocator.h>
 #include "DefaultMemoryAllocator.hpp"
 #include "STDAllocator.hpp"
