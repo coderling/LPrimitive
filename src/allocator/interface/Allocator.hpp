@@ -73,7 +73,7 @@ class TAllocator : public IAllocator
 #endif
           chunk{size},
           allocator{chunk, std::forward<ARGS>(args)...},
-          track{name, chunk.Data(), chunk.Size()}
+          track{GetName(), chunk.Data(), chunk.Size()}
     {
     }
 
@@ -85,7 +85,7 @@ class TAllocator : public IAllocator
 #endif
           chunk{std::forward<MemoryStrategy>(chunk)},
           allocator{chunk, std::forward<ARGS>(args)...},
-          track{name, chunk.Data(), chunk.Size()}
+          track{GetName(), chunk.Data(), chunk.Size()}
     {
     }
 
