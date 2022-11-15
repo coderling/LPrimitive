@@ -40,7 +40,7 @@ class HeapChunk
 
     void* Data() const noexcept { return p_begin; }
     void* Begin() const noexcept { return p_begin; }
-    void* End() const noexcept { return p_begin; }
+    void* End() const noexcept { return p_end; }
     size_t Size() const noexcept { return static_cast<size_t>(uintptr_t(p_end) - uintptr_t(p_begin)); }
 
     friend void swap(HeapChunk& lhs, HeapChunk& rhs)
