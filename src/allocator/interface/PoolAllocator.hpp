@@ -2,10 +2,10 @@
 
 #include <EASTL/atomic.h>
 #include <EASTL/utility.h>
-#include <Align.hpp>
-#include <CommonDefines.hpp>
-#include <DebugUtility.hpp>
-#include <Misc.hpp>
+#include "Align.hpp"
+#include "CommonDefines.hpp"
+#include "DebugUtility.hpp"
+#include "Misc.hpp"
 
 namespace CDL::Primitive
 {

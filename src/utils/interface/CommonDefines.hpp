@@ -28,3 +28,16 @@ inline bool Succeed(const L_RESULT& tr) { return tr >= static_cast<L_RESULT>(0);
 
 inline bool Failed(const L_RESULT& tr) { return !Succeed(tr); }
 }  // namespace CDL::Primitive
+
+#if __has_builtin(__builtin_expect)
+#ifdef __cplusplus
+#define UTILS_LIKELY(exp) (__builtin_expect(!!(exp), true))
+#define UTILS_UNLIKELY(exp) (__builtin_expect(!!(exp), false))
+#else
+#define UTILS_LIKELY(exp) (__builtin_expect(!!(exp), 1))
+#define UTILS_UNLIKELY(exp) (__builtin_expect(!!(exp), 0))
+#endif
+#else
+#define UTILS_LIKELY(exp) (!!(exp))
+#define UTILS_UNLIKELY(exp) (!!(exp))
+#endif
