@@ -25,7 +25,8 @@ class LinearAllocator
    public:
     LinearAllocator(void* _p_begin, void* _p_end) noexcept
         : p_begin{_p_begin},
-          size{uintptr_t(_p_end) - uintptr_t(_p_begin)}
+          size{uintptr_t(_p_end) - uintptr_t(_p_begin)},
+          cur{0}
     {
     }
 
