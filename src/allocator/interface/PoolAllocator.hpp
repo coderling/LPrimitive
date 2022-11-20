@@ -92,6 +92,9 @@ class FreeList
 
         L_ASSERT_EXPR(valid, "try push a ptr that address not out of element in list");
 #endif
+        Node* node = static_cast<Node*>(ptr);
+        node->next = head;
+        head = node;
     }
 
     void* First() noexcept;
@@ -204,6 +207,12 @@ class PoolAllocator
    public:
     PoolAllocator(void* begin, void* end) noexcept
         : list{begin, end, ELEMENT_SIZE, ALIGNMENT, OFFSET}
+    {
+    }
+
+    template <typename CHUNK>
+    explicit PoolAllocator(CHUNK& chunk) noexcept
+        : list{chunk.Begin(), chunk.End(), ELEMENT_SIZE, ALIGNMENT, OFFSET}
     {
     }
 
