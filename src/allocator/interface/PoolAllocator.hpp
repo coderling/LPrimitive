@@ -241,10 +241,10 @@ class PoolAllocator
     const void* GetBasePtr() noexcept { return list.First(); }
 };
 
-template <size_t ELEMENT_SIZE, size_t ALIGNMENT = alignof(std::max_align_t), size_t OFFSET = 0>
-using ObjectPool = PoolAllocator<ELEMENT_SIZE, ALIGNMENT, OFFSET, FreeList>;
+template <typename T, size_t ELEMENT_SIZE, size_t OFFSET = 0>
+using ObjectPool = PoolAllocator<ELEMENT_SIZE, alignof(T), OFFSET, FreeList>;
 
-template <size_t ELEMENT_SIZE, size_t ALIGNMENT = alignof(std::max_align_t), size_t OFFSET = 0>
-using ThreadSafeObjectPool = PoolAllocator<ELEMENT_SIZE, ALIGNMENT, OFFSET, ThreadSafeFreeList>;
+template <typename T, size_t ELEMENT_SIZE, size_t OFFSET = 0>
+using ThreadSafeObjectPool = PoolAllocator<ELEMENT_SIZE, alignof(T), OFFSET, ThreadSafeFreeList>;
 
 }  // namespace CDL::Primitive
