@@ -92,9 +92,12 @@ class FreeList
 
         L_ASSERT_EXPR(valid, "try push a ptr that address not out of element in list");
 #endif
+        Node* node = (Node*)ptr;
+        node->next = head;
+        head = node;
     }
 
-    void* First() noexcept;
+    void* First() noexcept { return head; }
 };
 
 class ThreadSafeFreeList
@@ -228,6 +231,14 @@ class PoolAllocator
     void Free(void* ptr, size_t) noexcept { list.Push(ptr); }
 
     constexpr size_t GetSize() const noexcept { return ELEMENT_SIZE; }
+
+    const void* GetBasePtr() noexcept { return list.First(); }
 };
+
+template <size_t ELEMENT_SIZE, size_t ALIGNMENT = alignof(std::max_align_t), size_t OFFSET = 0>
+using ObjectPool = PoolAllocator<ELEMENT_SIZE, ALIGNMENT, OFFSET, FreeList>;
+
+template <size_t ELEMENT_SIZE, size_t ALIGNMENT = alignof(std::max_align_t), size_t OFFSET = 0>
+using ThreadSafeObjectPool = PoolAllocator<ELEMENT_SIZE, ALIGNMENT, OFFSET, ThreadSafeFreeList>;
 
 }  // namespace CDL::Primitive
