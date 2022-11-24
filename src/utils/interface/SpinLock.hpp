@@ -31,7 +31,7 @@ class Spinlock
 
                 while (is_locked.load(eastl::memory_order_relaxed))
                     {
-                        // pause
+                        Pause();
                     }
             }
     }
