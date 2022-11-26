@@ -97,7 +97,7 @@ class FreeList
         head = node;
     }
 
-    void* First() noexcept;
+    void* First() noexcept { return head; }
 };
 
 class ThreadSafeFreeList
@@ -237,6 +237,14 @@ class PoolAllocator
     void Free(void* ptr, size_t) noexcept { list.Push(ptr); }
 
     constexpr size_t GetSize() const noexcept { return ELEMENT_SIZE; }
+
+    const void* GetBasePtr() noexcept { return list.First(); }
 };
+
+template <typename T, size_t ELEMENT_SIZE, size_t OFFSET = 0>
+using ObjectPool = PoolAllocator<ELEMENT_SIZE, alignof(T), OFFSET, FreeList>;
+
+template <typename T, size_t ELEMENT_SIZE, size_t OFFSET = 0>
+using ThreadSafeObjectPool = PoolAllocator<ELEMENT_SIZE, alignof(T), OFFSET, ThreadSafeFreeList>;
 
 }  // namespace CDL::Primitive

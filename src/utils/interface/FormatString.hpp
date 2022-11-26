@@ -32,7 +32,7 @@ void StreamOutput(StreamType& st, const FArgsType f_args, const ArgsType&... arg
 template <typename StreamType, typename... ArgsType>
 void StreamFormatOutput(StreamType& st, const eastl::string_view& format, const ArgsType&... args)
 {
-    auto o = std::vformat(format, std::make_format_args(args...));
+    auto o = std::vformat(format.data(), std::make_format_args(args...));
     StreamOutput(st, o);
 }
 

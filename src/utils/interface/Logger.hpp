@@ -61,10 +61,10 @@ void Log(ELOG_LEVEL level, const char *file, const char *function, const int &li
 
 template <bool throwException, typename... ArgsType>
 void LogFormat(
-    ELOG_LEVEL level, const char *file, const char *function, const int &line, const std::string_view &format, const ArgsType &...args)
+    ELOG_LEVEL level, const char *file, const char *function, const int &line, const eastl::string_view &format, const ArgsType &...args)
 {
     const auto &msg = CDL::Primitive::FormatString(format, args...);
-    Log<throwException>(level, file, function, line, msg);
+    Log<throwException>(level, file, function, line, msg.c_str());
 }
 
 #if PLATFORM_WINDOWS
