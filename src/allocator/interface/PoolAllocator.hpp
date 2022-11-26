@@ -155,7 +155,7 @@ class ThreadSafeFreeList
     void* Pop() noexcept
     {
         Node* const storage = p_storage;
-        HeadPtr current_head = head.load();
+        HeadPtr current_head = head.load(eastl::memory_order_relaxed);
         while (current_head.offset >= 0)
             {
                 Node* const next = storage[current_head.offset].next.load(eastl::memory_order_relaxed);
@@ -183,7 +183,7 @@ class ThreadSafeFreeList
     {
         Node* const storage = p_storage;
         Node* const node = static_cast<Node*>(ptr);
-        HeadPtr current_head = head.load();
+        HeadPtr current_head = head.load(eastl::memory_order_relaxed);
         HeadPtr n_head = {int32_t(node - storage), current_head.tag + 1};
         do
             {
