@@ -225,7 +225,7 @@ class PoolAllocator
 
     PoolAllocator& operator=(PoolAllocator&& rhs) noexcept { list = eastl::move(rhs.list); }
 
-    void* Allocate(size_t size, size_t alignment = alignof(std::max_align_t), size_t offset = 0)
+    void* Allocate(size_t size, size_t alignment = ALIGNMENT, size_t offset = 0)
     {
         L_ASSERT_EXPR(size == ELEMENT_SIZE);
         L_ASSERT_EXPR(alignment == ALIGNMENT);
