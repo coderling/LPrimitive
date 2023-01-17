@@ -1,14 +1,13 @@
 #pragma once
 
 #ifdef __cplusplus
-#include <EASTL/type_traits.h>
 #include <concepts>
 
 #define DEFINE_BIT_OPEATOR_AR(f)                                                                                                           \
     template <ENUM_BITABLE EType>                                                                                                          \
     inline EType operator f(const EType& lhs, const EType& rhs)                                                                            \
     {                                                                                                                                      \
-        using T = typename eastl::underlying_type<EType>::type;                                                                            \
+        using T = typename std::underlying_type<EType>::type;                                                                              \
         return static_cast<EType>(static_cast<T>(lhs) f static_cast<T>(rhs));                                                              \
     }
 
@@ -26,12 +25,12 @@
     DEFINE_BIT_OPEATOR_AS(f, CN(f, =))
 
 template <typename EType>
-concept ENUM_BITABLE = eastl::is_integral_v<eastl::underlying_type_t<EType>>;
+concept ENUM_BITABLE = std::is_integral_v<std::underlying_type_t<EType>>;
 
 template <ENUM_BITABLE EType>
 inline EType operator~(const EType& lhs)
 {
-    using T = typename eastl::underlying_type<EType>::type;
+    using T = typename std::underlying_type<EType>::type;
     return static_cast<EType>(~(static_cast<T>(lhs)));
 }
 
