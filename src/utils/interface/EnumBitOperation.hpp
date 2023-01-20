@@ -13,9 +13,10 @@
 
 #define DEFINE_BIT_OPEATOR_AS(l, f)                                                                                                        \
     template <ENUM_BITABLE EType>                                                                                                          \
-    inline EType& operator f(const EType& lhs, const EType& rhs)                                                                           \
+    inline EType& operator f(EType& lhs, const EType& rhs)                                                                                 \
     {                                                                                                                                      \
-        return lhs l rhs;                                                                                                                  \
+        lhs = lhs l rhs;                                                                                                                   \
+        return lhs;                                                                                                                        \
     }
 
 #define CN(f, e) f##e
