@@ -74,6 +74,13 @@ inline bool operator!=(const allocator&, const allocator&)
     return false;  // All allocators are considered equal, as they merely use global new/delete.
 }
 #endif
+
+inline allocator* GetDefaultAllocator()
+{
+    static allocator default_allocator;
+    return &default_allocator;
+}
+
 }  // namespace eastl
 
 namespace CDL::Primitive
