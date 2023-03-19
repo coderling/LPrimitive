@@ -12,7 +12,7 @@ target("primitive")
     add_packages("EASTLLIB")  
     
     -- rules
-    add_rules("@xmake-utils/cm-cxflags")
+    add_rules("cm-cxflags")
     add_rules("mode-init")
     add_rules("dep-eastl")
     on_load(function(target) 
