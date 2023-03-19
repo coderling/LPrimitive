@@ -1,8 +1,9 @@
 #pragma once
 #include <type_traits>
 
-#include "CommonDefines.hpp"
-#include "Misc.hpp"
+#include "../utils/Common.hpp"
+#include "../utils/CommonDefines.hpp"
+
 
 namespace CDL::Primitive
 {
@@ -23,7 +24,7 @@ class HeapChunk
 #else
                 ::posix_memalign(&p, alignment, size);
 #endif
-                p_end = Misc::PtrAdd(p_begin, size);
+                p_end = PtrAdd(p_begin, size);
             }
     }
 

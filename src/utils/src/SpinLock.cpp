@@ -1,4 +1,4 @@
-#include "SpinLock.hpp"
+#include "../../interface/primitive/utils/SpinLock.hpp"
 
 #if defined(_MSC_VER) && ((_M_IX86_FP >= 2) || defined(_M_X64))
 #include <emmintrin.h>

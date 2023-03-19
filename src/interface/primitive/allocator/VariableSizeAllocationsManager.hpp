@@ -2,11 +2,12 @@
 // http://diligentgraphics.com/diligent-engine/architecture/d3d12/variable-size-memory-allocations-manager/
 
 #include <EASTL/map.h>
-#include "Align.hpp"
-#include "DebugUtility.hpp"
+#include "../utils/Align.hpp"
+#include "../utils/DebugUtility.hpp"
+#include "../utils/Logger.hpp"
 #include "EAAllocatorImpl.hpp"
 #include "IAllocator.hpp"
-#include "Logger.hpp"
+
 
 namespace CDL::Primitive
 {

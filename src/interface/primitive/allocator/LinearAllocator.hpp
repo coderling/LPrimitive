@@ -4,9 +4,10 @@
 #include <assert.h>
 #include <stdint.h>
 
-#include "Align.hpp"
-#include "CommonDefines.hpp"
-#include "Misc.hpp"
+#include "../utils/Align.hpp"
+#include "../utils/Common.hpp"
+#include "../utils/CommonDefines.hpp"
+
 
 namespace CDL::Primitive::AllocateStrategy
 {
@@ -55,7 +56,7 @@ class LinearAllocator
     {
         assert(offset == 0);
         void* const ptr = AlignUp(GetCurrent(), alignment);
-        void* const e_ptr = Misc::PtrAdd(ptr, size);
+        void* const e_ptr = PtrAdd(ptr, size);
         bool suc = e_ptr <= End();
         if (suc)
             {
@@ -70,7 +71,7 @@ class LinearAllocator
     // use STDAllocator
     void Free(void*, size_t) noexcept {}
 
-    void* GetCurrent() noexcept { return Misc::PtrAdd(p_begin, cur); }
+    void* GetCurrent() noexcept { return PtrAdd(p_begin, cur); }
 
     void Rewind(void* ptr) noexcept
     {
@@ -94,7 +95,7 @@ class LinearAllocator
     void* Begin() noexcept { return p_begin; }
 
    private:
-    void* End() const noexcept { return Misc::PtrAdd(p_begin, size); }
+    void* End() const noexcept { return PtrAdd(p_begin, size); }
 
     void SetCurrent(void* ptr) { cur = static_cast<size_t>(uintptr_t(ptr) - uintptr_t(p_begin)); }
 };

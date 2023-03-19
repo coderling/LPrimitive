@@ -2,7 +2,7 @@
 #include <cassert>
 #include <type_traits>
 
-#include "Align.hpp"
+#include "../utils/Align.hpp"
 #include "Allocator.hpp"
 
 namespace CDL::Primitive::AllocateStrategy

@@ -1,5 +1,5 @@
-#include "VariableSizeAllocationsManager.hpp"
-#include "STDAllocator.hpp"
+#include "../../interface/primitive/allocator/VariableSizeAllocationsManager.hpp"
+#include "../../interface/primitive/allocator/STDAllocator.hpp"
 
 using namespace CDL::Primitive;
 

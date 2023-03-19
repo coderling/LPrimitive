@@ -2,10 +2,11 @@
 
 #include <EASTL/atomic.h>
 #include <EASTL/utility.h>
-#include "Align.hpp"
-#include "CommonDefines.hpp"
-#include "DebugUtility.hpp"
-#include "Misc.hpp"
+#include "../utils/Align.hpp"
+#include "../utils/Common.hpp"
+#include "../utils/CommonDefines.hpp"
+#include "../utils/DebugUtility.hpp"
+
 
 namespace CDL::Primitive
 {
@@ -27,9 +28,9 @@ class FreeList
    public:
     FreeList(void* _begin, void* _end, size_t element_size, size_t alignment, size_t offset) noexcept
     {
-        void* const ptr = Misc::PtrAdd(begin, offset);
+        void* const ptr = PtrAdd(begin, offset);
         void* const b_ptr = AlignUp(ptr, alignment);
-        void* const next = AlignUp(Misc::PtrAdd(b_ptr, element_size), alignment);
+        void* const next = AlignUp(PtrAdd(b_ptr, element_size), alignment);
 
         L_ASSERT_EXPR(next > b_ptr);
 
@@ -50,12 +51,12 @@ class FreeList
         Node* current = head;
         for (size_t index = 1; index < count; ++index)
             {
-                current->next = Misc::PtrAdd(current, distance);
+                current->next = PtrAdd(current, distance);
                 current = current->next;
             }
 
         L_ASSERT_EXPR(current < end);
-        L_ASSERT_EXPR(Misc::PtrAdd(current, distance) <= end);
+        L_ASSERT_EXPR(PtrAdd(current, distance) <= end);
         current->next = nullptr;
     }
 
@@ -87,7 +88,7 @@ class FreeList
                         break;
                     }
 
-                current = Misc::PtrAdd(current, edistance);
+                current = PtrAdd(current, edistance);
         } while (current < end);
 
         L_ASSERT_EXPR(valid, "try push a ptr that address not out of element in list");
@@ -120,9 +121,9 @@ class ThreadSafeFreeList
    public:
     ThreadSafeFreeList(void* begin, void* end, size_t element_size, size_t alignment, size_t offset) noexcept
     {
-        void* const ptr = Misc::PtrAdd(begin, offset);
+        void* const ptr = PtrAdd(begin, offset);
         void* const b_ptr = AlignUp(ptr, alignment);
-        void* const next = AlignUp(Misc::PtrAdd(b_ptr, element_size), alignment);
+        void* const next = AlignUp(PtrAdd(b_ptr, element_size), alignment);
 
         L_ASSERT_EXPR(next > b_ptr);
 
@@ -139,12 +140,12 @@ class ThreadSafeFreeList
         Node* current = head;
         for (size_t index = 1; index < count; ++index)
             {
-                current->next = Misc::PtrAdd(current, distance);
+                current->next = PtrAdd(current, distance);
                 current = current->next;
             }
 
         L_ASSERT_EXPR(current < end);
-        L_ASSERT_EXPR(Misc::PtrAdd(current, distance) <= end);
+        L_ASSERT_EXPR(PtrAdd(current, distance) <= end);
         current->next = nullptr;
 
         this->head.store({int32_t(head - p_storage), 0});

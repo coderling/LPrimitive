@@ -2,7 +2,7 @@
 
 #include <EASTL/utility.h>
 
-#include "CommonDefines.hpp"
+#include "../utils/CommonDefines.hpp"
 namespace CDL::Primitive
 {
 class StaticChunk

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include <CString.hpp>
+#include "../../interface/primitive/utils/CString.hpp"
 
 #include <algorithm>
 #include <memory>
