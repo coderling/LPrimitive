@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "../interface/CallStack.hpp"
+#include "../../interface/primitive/utils/CallStack.hpp"
 
 #include <algorithm>
 #include <cstdio>
@@ -22,21 +22,21 @@
 #include <memory>
 
 // FIXME: Some platforms do not have execinfo.h (but have unwind.h)
-#if !defined(__ANDROID__) && !defined(_WINDOWS) && !defined(__EMSCRIPTEN__)
+#if !defined(PLATFORM_ANDROID) && !defined(PLATFORM_WINDOWS) && !defined(PLATFORM_EMSCRIPTEN)
 #include <execinfo.h>
 #define HAS_EXECINFO 1
 #else
 #define HAS_EXECINFO 0
 #endif
 
-#if !defined(_WINDOWS) && !defined(__EMSCRIPTEN__)
+#if !defined(PLATFORM_WINDOWS) && !defined(PLATFORM_EMSCRIPTEN)
 #include <dlfcn.h>
 #define HAS_DLADDR 1
 #else
 #define HAS_DLADDR 0
 #endif
 
-#if !defined(NDEBUG) && !defined(_WINDOWS)
+#if !defined(NDEBUG) && !defined(PLATFORM_WINDOWS)
 #include <cxxabi.h>
 #endif
 
@@ -114,7 +114,7 @@ bool CallStack::operator<(const CallStack& rhs) const
 
 CString CallStack::demangle(const char* mangled)
 {
-#if !defined(NDEBUG) && !defined(_WINDOWS)
+#if !defined(NDEBUG) && !defined(PLATFORM_WINDOWS)
     size_t len;
     int status;
     std::unique_ptr<char, FreeDeleter> demangled(abi::__cxa_demangle(mangled, nullptr, &len, &status));

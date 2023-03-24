@@ -6,7 +6,7 @@
         {
             "label": "XMakeGen_Commands",
             "type": "shell",
-            "command": "xmake project -k compile_commands"
+            "command": "xmake project -k compile_commands ${workspaceFolder}/.vscode"
         }
     ]
 }
