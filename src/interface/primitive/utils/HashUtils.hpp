@@ -37,12 +37,20 @@ inline size_t HansRange(Iter begin, Iter end)
     return hash;
 }
 
-inline size_t ComputeHash(const void* bytes, const uint32_t& size_in_bytes)
+inline size_t ComputeHash(const void* bytes, uint32_t size_in_bytes)
 {
     const uint8_t* p = (uint8_t*)bytes;
-    uint32_t c, result = 2166136261U;
-    while ((c = *p++) != 0) result = (result * 16777619) ^ c;
-    return (size_t)result;
+    uint32_t result = 2166136261U;
+    while (size_in_bytes--) result = (result * 16777619) ^ (*p++);
+
+    return result;
+}
+
+inline void ComputeHashCombine(size_t& hash, const void* bytes, uint32_t size_in_bytes)
+{
+    const uint8_t* p = (uint8_t*)bytes;
+    uint32_t result = hash;
+    while (size_in_bytes--) result = (result * 16777619) ^ (*p++);
 }
 
 }  // namespace CDL::Primitive
