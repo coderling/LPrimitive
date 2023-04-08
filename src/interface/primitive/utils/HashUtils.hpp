@@ -49,7 +49,7 @@ inline size_t ComputeHash(const void* bytes, uint32_t size_in_bytes)
 inline void ComputeHashCombine(size_t& hash, const void* bytes, uint32_t size_in_bytes)
 {
     const uint8_t* p = (uint8_t*)bytes;
-    uint32_t result = hash;
+    uint32_t result = (uint32_t)hash;
     while (size_in_bytes--) result = (result * 16777619) ^ (*p++);
 }
 

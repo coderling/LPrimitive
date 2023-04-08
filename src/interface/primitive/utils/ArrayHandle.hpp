@@ -25,7 +25,7 @@ struct ArrayHandler
     }
 
     template <typename T>
-    static inline void ArrayAlloc(T** parr, uint32_t request_capacity)
+    static inline void ArrayAlloc(T** parr, uint64_t request_capacity)
     {
         auto arr = *parr;
         auto* header = arr ? ArrayHead(arr) : nullptr;
@@ -109,7 +109,7 @@ struct ArrayHandler
     }
 
     template <typename T>
-    static inline void ArrayCheckCapacity(T** parr, uint32_t n)
+    static inline void ArrayCheckCapacity(T** parr, uint64_t n)
     {
         auto arr = *parr;
         int64_t c = arr ? (int64_t)(ArrayHead(arr)->length + n) - (int64_t)ArrayHead(arr)->capacity : n;

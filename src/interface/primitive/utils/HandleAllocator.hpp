@@ -64,8 +64,8 @@ class HandleAllocator final
                 return id;
             }
 
-        HandleType* handle = &((HandleType)id);
-        InnerData* ptr = (InnerData*)pool.IDToPointer(handle->id._id);
+        HandleType handle{id};
+        InnerData* ptr = (InnerData*)pool.IDToPointer(handle.id._id);
         L_ASSERT_EXPR(ptr != nullptr);
 
         ptr->target = p_target;
@@ -88,22 +88,22 @@ class HandleAllocator final
 
     void DeAllocate(IDUnionType& id) noexcept
     {
-        HandleType* handle = &((HandleType)id);
-        if (handle->IsNull())
+        HandleType handle{id};
+        if (handle.IsNull())
             {
                 return;
             }
-        InnerData* ptr = (InnerData*)pool.IDToPointer(handle->id._id);
+        InnerData* ptr = (InnerData*)pool.IDToPointer(handle.id._id);
         pool.DeAllocate(ptr);
 
-        *handle = HandleType::InvalidHandle;
+        handle.CID = HandleType::InvalidHandle;
     }
 
     template <typename T>
     inline eastl::enable_if_t<!eastl::is_pointer_v<T>, T*> HandleCast(const IDUnionType& id) noexcept
     {
-        HandleType* handle = &((HandleType)id);
-        InnerData* const ptr = (InnerData*)pool.IDToPointer(handle->id._id);
+        HandleType handle{id};
+        InnerData* const ptr = (InnerData*)pool.IDToPointer(handle.id._id);
         if (ptr)
 
             {
@@ -132,13 +132,13 @@ class HandleAllocator final
 
     bool IsValid(const IDUnionType& id) const noexcept
     {
-        HandleType* handle = &((HandleType)id);
-        if (handle->IsNull())
+        HandleType handle{id};
+        if (handle.IsNull())
             {
                 return false;
             }
-        auto version = pool.GetPtrVersion(pool.IDToPointer(handle->id._id));
-        return !pool.IsVersionRecyCle(version) && version == handle->id._version;
+        auto version = pool.GetPtrVersion(pool.IDToPointer(handle.id._id));
+        return !pool.IsVersionRecyCle(version) && version == handle.id._version;
     }
 
     template <typename T>
@@ -150,8 +150,8 @@ class HandleAllocator final
                 return false;
             }
         debug_lock.Lock();
-        HandleType* handle = &((HandleType)id);
-        void* const ptr = pool.IDToPointer(handle->id._id);
+        HandleType handle{id};
+        void* const ptr = pool.IDToPointer(handle.id._id);
         auto iter = handle2typename.find(ptr);
         bool valid = iter != handle2typename.end() && iter->second == typeid(T).name();
         debug_lock.Unlock();

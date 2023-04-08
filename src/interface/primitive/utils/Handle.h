@@ -19,7 +19,7 @@ struct IHandle
         IDType _id;
     };
     static constexpr IDType InvalidHandleID = ~((IDType)0);
-    static constexpr IDType InvalidHandle = ~((UnionIDType)0);
+    static constexpr UnionIDType InvalidHandle = ~((UnionIDType)0);
     union
     {
         ID id;
@@ -37,6 +37,11 @@ struct IHandle
         : id{_version, _id}
     {
         assert(!IsNull());
+    }
+
+    constexpr IHandle(const UnionIDType& uid) noexcept
+        : CID{uid}
+    {
     }
 
     explicit IHandle(const IDType& _id) noexcept

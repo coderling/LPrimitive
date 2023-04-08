@@ -46,57 +46,57 @@ typename eastl::enable_if<!eastl::is_destructible<T>::value, void>::type Destruc
 {
 }
 
-class MPMC_Node
+struct MPMC_Node
 {
-   public:
     eastl::atomic<MPMC_Node*> next;
 };
 
-class MPSC_Node
+struct MPSC_Node
 {
-   public:
     eastl::atomic<MPSC_Node*> next;
 };
+
 #define ENUM_OPERATORS(EnumClass)                                                                                                          \
+    using EnumClass##_type = __underlying_type(EnumClass);                                                                                 \
     inline EnumClass& operator|=(EnumClass& lhs, EnumClass rhs)                                                                            \
     {                                                                                                                                      \
-        return lhs = (EnumClass)((__underlying_type(EnumClass))rhs | (__underlying_type(EnumClass))rhs);                                   \
+        return lhs = (EnumClass)((EnumClass##_type)rhs | (EnumClass##_type)rhs);                                                           \
     }                                                                                                                                      \
     inline EnumClass& operator&=(EnumClass& lhs, EnumClass rhs)                                                                            \
     {                                                                                                                                      \
-        return lhs = (EnumClass)((__underlying_type(EnumClass))rhs & (__underlying_type(EnumClass))rhs);                                   \
+        return lhs = (EnumClass)((EnumClass##_type)rhs & (EnumClass##_type)rhs);                                                           \
     }                                                                                                                                      \
     inline EnumClass& operator^=(EnumClass& lhs, EnumClass rhs)                                                                            \
     {                                                                                                                                      \
-        return lhs = (EnumClass)((__underlying_type(EnumClass))rhs ^ (__underlying_type(EnumClass))rhs);                                   \
+        return lhs = (EnumClass)((EnumClass##_type)rhs ^ (EnumClass##_type)rhs);                                                           \
     }                                                                                                                                      \
     inline constexpr EnumClass operator|(EnumClass lhs, EnumClass rhs)                                                                     \
     {                                                                                                                                      \
-        return (EnumClass)((__underlying_type(EnumClass))lhs | (__underlying_type(EnumClass))rhs);                                         \
+        return (EnumClass)((EnumClass##_type)lhs | (EnumClass##_type)rhs);                                                                 \
     }                                                                                                                                      \
     inline constexpr EnumClass operator&(EnumClass lhs, EnumClass rhs)                                                                     \
     {                                                                                                                                      \
-        return (EnumClass)((__underlying_type(EnumClass))lhs & (__underlying_type(EnumClass))rhs);                                         \
+        return (EnumClass)((EnumClass##_type)lhs & (EnumClass##_type)rhs);                                                                 \
     }                                                                                                                                      \
     inline constexpr EnumClass operator^(EnumClass lhs, EnumClass rhs)                                                                     \
     {                                                                                                                                      \
-        return (EnumClass)((__underlying_type(EnumClass))lhs ^ (__underlying_type(EnumClass))rhs);                                         \
+        return (EnumClass)((EnumClass##_type)lhs ^ (EnumClass##_type)rhs);                                                                 \
     }                                                                                                                                      \
     inline constexpr bool operator!(EnumClass e)                                                                                           \
     {                                                                                                                                      \
-        return !(__underlying_type(EnumClass))e;                                                                                           \
+        return !(EnumClass##_type)e;                                                                                                       \
     }                                                                                                                                      \
     inline constexpr EnumClass operator~(EnumClass e)                                                                                      \
     {                                                                                                                                      \
-        return (EnumClass) ~(__underlying_type(EnumClass))e;                                                                               \
+        return (EnumClass) ~(EnumClass##_type)e;                                                                                           \
     }                                                                                                                                      \
     inline bool HAS_ANY_FLAGS(EnumClass e, EnumClass flags)                                                                                \
     {                                                                                                                                      \
         return (e & flags) != (EnumClass)0;                                                                                                \
     }                                                                                                                                      \
-    inline bool HAS_ANY_FLAGS(__underlying_type(EnumClass) e, EnumClass flags)                                                             \
+    inline bool HAS_ANY_FLAGS(EnumClass##_type e, EnumClass flags)                                                                         \
     {                                                                                                                                      \
-        return (e & (__underlying_type(EnumClass))flags) != 0;                                                                             \
+        return (e & (EnumClass##_type)flags) != 0;                                                                                         \
     }
 
 }  // namespace CDL::Primitive
