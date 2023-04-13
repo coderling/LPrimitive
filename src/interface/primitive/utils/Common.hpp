@@ -60,15 +60,15 @@ struct MPSC_Node
     using EnumClass##_type = __underlying_type(EnumClass);                                                                                 \
     inline EnumClass& operator|=(EnumClass& lhs, EnumClass rhs)                                                                            \
     {                                                                                                                                      \
-        return lhs = (EnumClass)((EnumClass##_type)rhs | (EnumClass##_type)rhs);                                                           \
+        return lhs = (EnumClass)((EnumClass##_type)lhs | (EnumClass##_type)rhs);                                                           \
     }                                                                                                                                      \
     inline EnumClass& operator&=(EnumClass& lhs, EnumClass rhs)                                                                            \
     {                                                                                                                                      \
-        return lhs = (EnumClass)((EnumClass##_type)rhs & (EnumClass##_type)rhs);                                                           \
+        return lhs = (EnumClass)((EnumClass##_type)lhs & (EnumClass##_type)rhs);                                                           \
     }                                                                                                                                      \
     inline EnumClass& operator^=(EnumClass& lhs, EnumClass rhs)                                                                            \
     {                                                                                                                                      \
-        return lhs = (EnumClass)((EnumClass##_type)rhs ^ (EnumClass##_type)rhs);                                                           \
+        return lhs = (EnumClass)((EnumClass##_type)lhs ^ (EnumClass##_type)rhs);                                                           \
     }                                                                                                                                      \
     inline constexpr EnumClass operator|(EnumClass lhs, EnumClass rhs)                                                                     \
     {                                                                                                                                      \

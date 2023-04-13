@@ -9,12 +9,12 @@ namespace CDL::Primitive
 {
 class HeapChunk
 {
-    void* p_begin;
-    void* p_end;
+    void* p_begin = nullptr;
+    void* p_end = nullptr;
 
    public:
     HeapChunk() noexcept = default;
-    HeapChunk(size_t size)
+    explicit HeapChunk(size_t size)
     {
         if (size > 0)
             {

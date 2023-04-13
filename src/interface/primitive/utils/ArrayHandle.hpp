@@ -151,7 +151,7 @@ struct ArrayHandler
                     }
                 else if (len < header->length)
                     {
-                        for (uint32_t index = len; len < header->length; ++index)
+                        for (uint32_t index = len; index < header->length; ++index)
                             {
                                 Destruct(arr[index]);
                             }

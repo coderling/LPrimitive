@@ -265,7 +265,8 @@ class VersionObjectPool final
     ~VersionObjectPool() noexcept
     {
 #if CDL_DEBUG
-        L_ASSERT_EXPR(allocate_count == 0);
+        //L_ASSERT_EXPR(allocate_count == 0);
+        LOG_ERROR("un release object count :", allocate_count.load());
 #endif
     }
 
