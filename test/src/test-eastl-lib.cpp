@@ -11,8 +11,8 @@ TEST(TestEASTLLIB, test_eastl)
     EXPECT_EQ(vec[0], 1);
     EXPECT_EQ(vec.size(), 1);
 
-    using C_A = CDL::Primitive::EAAllocator<CDL::Primitive::DefaultMemoryAllocator>;
-    auto vec_1 = eastl::vector<int, C_A>(C_A{CDL::Primitive::GetGlobalAllocator()});
+    using C_A = DT::Primitive::EAAllocator<DT::Primitive::DefaultMemoryAllocator>;
+    auto vec_1 = eastl::vector<int, C_A>(C_A{DT::Primitive::GetGlobalAllocator()});
     vec_1.push_back(2);
     EXPECT_EQ(vec_1[0], 2);
     EXPECT_EQ(vec_1.size(), 1);

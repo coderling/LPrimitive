@@ -5,7 +5,7 @@ int main(int argc, char** argv)
 {
     testing::InitGoogleTest(&argc, argv);
 
-    // auto timer = CDL::Primitive::Timer();
+    // auto timer = DT::Primitive::Timer();
     //  auto now = timer.ElapsedTimef();
     while (false)
         // while (timer.ElapsedTimef() - now < 10)

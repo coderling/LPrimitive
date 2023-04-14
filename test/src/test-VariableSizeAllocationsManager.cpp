@@ -2,7 +2,7 @@
 #include <DefaultMemoryAllocator.hpp>
 #include <VariableSizeAllocationsManager.hpp>
 
-using namespace CDL::Primitive;
+using namespace DT::Primitive;
 TEST(VariableSizeAllocationsManager, Allocate_And_Free)
 {
     using OffsetSizeType = VariableSizeAllocationsManager::OffsetSizeType;
